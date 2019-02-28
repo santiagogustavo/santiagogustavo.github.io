@@ -6,6 +6,8 @@ import { FadeIn, StretchIn } from 'utils/animations';
 export const Container = styled.div`
   height: 100vh;
   width: 100vw;
+  max-height: 100vh;
+  max-width: 100vw;
   background-color: var(--color-background);
   color: var(--color-foreground);
 `;

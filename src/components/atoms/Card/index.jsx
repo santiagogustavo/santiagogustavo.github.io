@@ -1,7 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Container, Bar } from './styles';
+import {
+  Container,
+  BarContainer,
+  Bar,
+  Controls,
+  Icon,
+} from './styles';
 
 class Card extends React.Component {
   state = {
@@ -10,6 +16,7 @@ class Card extends React.Component {
     lastPageX: 0,
     lastPageY: 0,
     showBar: true,
+    isMaximized: false,
     isDragging: false,
   }
 
@@ -34,6 +41,10 @@ class Card extends React.Component {
 
   updatePosition = (x, y) => this.setState({ x, y });
 
+  handleMaximizeRestore = () => this.setState(prevState => (
+    { isMaximized: !prevState.isMaximized }
+  ));
+
   handleMouseDown = (event) => {
     event.preventDefault();
 
@@ -46,7 +57,7 @@ class Card extends React.Component {
   }
 
   handleMouseMove = (event) => {
-    if (this.state.isDragging) {
+    if (this.state.isDragging && !this.state.isMaximized) {
       const {
         x, y,
         lastPageX, lastPageY,
@@ -67,10 +78,30 @@ class Card extends React.Component {
 
   render() {
     const { children, ...props } = this.props;
-    const { x, y, showBar } = this.state;
+    const {
+      x, y, showBar,
+      isDragging, isMaximized,
+    } = this.state;
     return (
-      <Container posX={x} posY={y} ref={this.ref} {...props}>
-        <Bar onMouseDown={this.handleMouseDown} visible={showBar} />
+      <Container
+        posX={x}
+        posY={y}
+        ref={this.ref}
+        isDragging={isDragging}
+        isMaximized={isMaximized}
+        {...props}
+      >
+        <BarContainer visible={showBar}>
+          <Bar onMouseDown={this.handleMouseDown} />
+          <Controls>
+            <Icon className="fa fas fa-window-minimize" />
+            <Icon
+              className={`fa fas fa-window-${isMaximized ? 'restore' : 'maximize'}`}
+              onClick={this.handleMaximizeRestore}
+            />
+            <Icon className="fa fas fa-times" style={{ fontSize: 16 }} />
+          </Controls>
+        </BarContainer>
         {children}
       </Container>
     );
