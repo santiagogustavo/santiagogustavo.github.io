@@ -1,10 +1,8 @@
 body {
   margin: 0;
   padding: 0;
+  overflow: hidden;
   font-family: "Open Sans", "Oxygen", sans-serif;
-  background-color: var(--color-background);
-  color: var(--color-foreground);
-  padding: 15px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

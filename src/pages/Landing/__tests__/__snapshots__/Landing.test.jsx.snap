@@ -7,7 +7,7 @@ exports[`Testing Landing.styles... Header should render correctly without props 
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-bdVaJa",
+        "componentId": "sc-ifAKCX",
         "isStatic": true,
         "rules": Array [
           "
@@ -20,7 +20,7 @@ exports[`Testing Landing.styles... Header should render correctly without props 
       "displayName": "styled.header",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-bdVaJa",
+      "styledComponentId": "sc-ifAKCX",
       "target": "header",
       "toString": [Function],
       "warnTooManyClasses": [Function],
