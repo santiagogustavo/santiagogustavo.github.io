@@ -1,5 +1,5 @@
 <template>
-  <v-app dark>
+  <v-app dark class="default">
     <v-navigation-drawer
       v-model="drawer"
       :mini-variant="miniVariant"
@@ -115,3 +115,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.default {
+  cursor: url(static/imgs/cursor/arrow.png), auto;
+
+  a:hover, button:hover {
+    cursor: url(static/imgs/cursor/pointer.png) 10 10, auto;
+  }
+}
+</style>
