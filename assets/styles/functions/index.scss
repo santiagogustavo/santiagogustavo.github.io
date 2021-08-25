@@ -1,0 +1,7 @@
+@function window-border($color: $color-black) {
+  @return 4px $color solid;
+}
+
+@function transition-ease($prop: all, $speed: 500ms) {
+  @return $prop $speed cubic-bezier(0.25, 1, 0.5, 1);
+}
