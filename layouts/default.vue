@@ -119,6 +119,7 @@ export default {
 <style lang="scss">
 .default {
   cursor: url(static/imgs/cursor/arrow.png), auto;
+  background: url(static/imgs/bg.png) !important;
 
   a:hover, button:hover {
     cursor: url(static/imgs/cursor/pointer.png) 10 10, auto;
