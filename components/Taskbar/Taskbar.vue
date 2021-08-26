@@ -1,13 +1,21 @@
 <template>
   <footer class="taskbar">
-    <Task>FALA DERICK AHAHHAHAHHHAHHHAHAAHHHAHAHAHAHAHAH</Task>
-    <Task active>FALA DERICK AHAHHAHAHHHAHHHAHAAHHHAHAHAHAHAHAH</Task>
+    <Task
+      v-for="window in windows"
+      :key="window.id"
+      :active="isWindowActive(window.id)"
+      @click.native="handleClickTask(window.id)"
+    >
+      {{ window.name }}
+    </Task>
     <Spacer />
     <Clock />
   </footer>
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
+
 import Task from '@/components/Taskbar/Task.vue';
 import Clock from '@/components/Taskbar/Clock.vue';
 import Spacer from '@/components/Spacer.vue';
@@ -18,6 +26,28 @@ export default {
     Task,
     Clock,
     Spacer,
+  },
+  computed: {
+    ...mapGetters({
+      windows: 'windowManager/getWindows',
+      activeWindow: 'windowManager/getActiveWindow',
+    }),
+  },
+  methods: {
+    ...mapActions({
+      minimizeWindow: 'windowManager/minimizeWindow',
+      restoreWindow: 'windowManager/restoreWindow',
+    }),
+    isWindowActive(id) {
+      return id === this.activeWindow;
+    },
+    handleClickTask(id) {
+      if (this.isWindowActive(id)) {
+        this.minimizeWindow(id);
+      } else {
+        this.restoreWindow(id);
+      }
+    },
   },
 };
 </script>

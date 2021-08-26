@@ -81,7 +81,7 @@ export default {
   computed: {
     ...mapGetters({
       getWindowById: 'windowManager/getWindowById',
-      activeWindow: 'windowManager/activeWindow',
+      activeWindow: 'windowManager/getActiveWindow',
     }),
     storedWindow() {
       return this.getWindowById(this.id);
@@ -112,6 +112,12 @@ export default {
         '--min-width': `${this.dimensions.width}px`,
       };
     }
+  },
+  watch: {
+    isMinimized(next) {
+      if (!next) return;
+      this.isRestored = true;
+    },
   },
   created() {
     this.id = uuidv4();
