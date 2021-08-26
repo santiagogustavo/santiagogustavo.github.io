@@ -1,23 +1,23 @@
 <template>
-  <Window name="Hello!">
-    <v-row>
-      <v-col class="text-center">
-        <img
-          src="/v.png"
-          alt="Vuetify.js"
-          class="mb-5 img"
-        >
-        <blockquote class="blockquote">
-          &#8220;First, solve the problem. Then, write the code.&#8221;
-          <footer>
-            <small>
-              <em>&mdash;John Johnson</em>
-            </small>
-          </footer>
-        </blockquote>
-      </v-col>
-    </v-row>
-  </Window>
+  <div>
+    <Window name="Hello!">
+      <v-row>
+        <v-col class="text-center">
+          <img src="/v.png" alt="Vuetify.js" class="mb-5 img" />
+          <blockquote class="blockquote">
+            &#8220;First, solve the problem. Then, write the code.&#8221;
+            <footer>
+              <small>
+                <em>&mdash;John Johnson</em>
+              </small>
+            </footer>
+          </blockquote>
+        </v-col>
+      </v-row>
+    </Window>
+    <Window name="blob"> ASDASD </Window>
+    <Window name="blobie"> ASDASDAJSDAJSDUHASUDHASUDHASUDHAOUSHDUOh </Window>
+  </div>
 </template>
 
 <script>

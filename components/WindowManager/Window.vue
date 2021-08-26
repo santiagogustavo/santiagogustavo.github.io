@@ -1,7 +1,6 @@
 <template>
   <div
     ref="window"
-    v-click-outside="handleInactiveWindow"
     :class="className"
     :style="cssVars"
     @click="handleActiveWindow"
@@ -58,7 +57,6 @@ export default {
   data() {
     return {
       id: '',
-      isActive: true,
       isMaximized: false,
       isRestored: false,
       isDragging: false,
@@ -83,9 +81,13 @@ export default {
   computed: {
     ...mapGetters({
       getWindowById: 'windowManager/getWindowById',
+      activeWindow: 'windowManager/activeWindow',
     }),
     storedWindow() {
       return this.getWindowById(this.id);
+    },
+    isActive() {
+      return this.activeWindow === this.id;
     },
     isMinimized() {
       return this.storedWindow?.isMinimized;
@@ -115,6 +117,7 @@ export default {
     this.id = uuidv4();
     this.registerWindow({
       id: this.id,
+      name: this.name,
       isMinimized: false,
     });
   },
@@ -137,14 +140,12 @@ export default {
       registerWindow: 'windowManager/registerWindow',
       minimizeWindow: 'windowManager/minimizeWindow',
       closeWindow: 'windowManager/closeWindow',
+      setActiveWindow: 'windowManager/setActiveWindow',
     }),
 
     // CLICKABLE ACTIONS
     handleActiveWindow() {
-      this.isActive = true;
-    },
-    handleInactiveWindow() {
-      this.isActive = false;
+      this.setActiveWindow(this.id);
     },
     handleMinimizeWindow() {
       this.minimizeWindow(this.id);
@@ -175,6 +176,7 @@ export default {
       event.preventDefault();
       this.isRestored = false;
       this.isDragging = true;
+      this.handleActiveWindow();
       this.updateCursorPosition(event.pageX, event.pageY);
       window.addEventListener('mousemove', this.handleMouseMove);
       window.addEventListener('mouseup', this.handleMouseUp);
@@ -243,9 +245,11 @@ export default {
   height: fit-content;
   width: fit-content;
   overflow: hidden;
+  z-index: $z-index-window-active;
 
   &--inactive {
-    filter: brightness(1);
+    filter: brightness(0.85);
+    z-index: $z-index-window-inactive;
   }
 
   &--minimized {
