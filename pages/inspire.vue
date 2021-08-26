@@ -28,7 +28,7 @@ export default {
   components: {
     Window,
   },
-  layout: 'default',
+  layout: 'desktop',
   template: 'default',
 };
 </script>

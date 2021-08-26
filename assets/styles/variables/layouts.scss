@@ -1,0 +1,5 @@
+// TASKBAR
+$taskbar-height: 32px;
+
+// WINDOW
+$window-maximized-height: calc(100% - #{$taskbar-height});

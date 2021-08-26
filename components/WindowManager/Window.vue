@@ -9,7 +9,7 @@
       <div class="window__header__name" @mousedown="handleMouseDown">
         {{ name }}
       </div>
-      <div class="window__header__buttons">
+      <div class="window__header__buttons" @click="handleActiveWindow">
         <v-btn icon small @click.stop="handleMinimizeWindow">
           <v-icon>mdi-window-minimize</v-icon>
         </v-btn>
@@ -145,16 +145,21 @@ export default {
 
     // CLICKABLE ACTIONS
     handleActiveWindow() {
+      if (this.isActive) {
+        return;
+      }
       this.setActiveWindow(this.id);
     },
     handleMinimizeWindow() {
       this.minimizeWindow(this.id);
     },
     handleMaximizeWindow() {
+      this.handleActiveWindow();
       this.isMaximized = true;
       this.isRestored = false;
     },
     handleRestoreWindow() {
+      this.handleActiveWindow();
       this.isMaximized = false;
       this.isRestored = true;
     },
@@ -262,7 +267,7 @@ export default {
   &--maximized {
     top: 0;
     left: 0;
-    min-height: 100%;
+    min-height: $window-maximized-height;
     min-width: 100%;
     transition: transition-ease();
   }
@@ -291,7 +296,10 @@ export default {
     &__name {
       width: 100%;
       height: auto;
+      line-height: 100%;
       padding-left: 8px;
+      padding-top: 5px;
+      padding-bottom: 5px;
       &:hover {
         cursor: $cursor-move;
       }
