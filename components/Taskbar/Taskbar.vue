@@ -1,7 +1,7 @@
 <template>
   <footer class="taskbar">
     <Task
-      v-for="window in windows"
+      v-for="window in openWindows"
       :key="window.id"
       :active="isWindowActive(window.id)"
       @click.native="handleClickTask(window.id)"
@@ -32,6 +32,9 @@ export default {
       windows: 'windowManager/getWindows',
       activeWindow: 'windowManager/getActiveWindow',
     }),
+    openWindows() {
+      return Object.values(this.windows).filter(window => !window.isClosed);
+    },
   },
   methods: {
     ...mapActions({

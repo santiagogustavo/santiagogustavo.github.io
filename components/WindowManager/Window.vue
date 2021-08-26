@@ -30,33 +30,36 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapActions } from 'vuex';
 import classNames from 'classnames';
-import { v4 as uuidv4 } from 'uuid';
 import { clamp } from '@/utils/math';
 
 export default {
   name: 'Window',
   props: {
+    id: {
+      type: String,
+      required: true,
+    },
     name: {
       type: String,
-      required: false,
-      default: undefined,
+      required: true,
     },
-    maximize: {
+    active: {
       type: Boolean,
-      required: false,
-      default: false,
+      required: true,
     },
-    minimize: {
+    closed: {
       type: Boolean,
-      required: false,
-      default: false,
+      required: true,
+    },
+    minimized: {
+      type: Boolean,
+      required: true,
     },
   },
   data() {
     return {
-      id: '',
       isMaximized: false,
       isRestored: false,
       isDragging: false,
@@ -79,29 +82,13 @@ export default {
     };
   },
   computed: {
-    ...mapGetters({
-      getWindowById: 'windowManager/getWindowById',
-      activeWindow: 'windowManager/getActiveWindow',
-    }),
-    storedWindow() {
-      return this.getWindowById(this.id);
-    },
-    isActive() {
-      return this.activeWindow === this.id;
-    },
-    isMinimized() {
-      return this.storedWindow?.isMinimized;
-    },
-    isClosed() {
-      return !this.storedWindow;
-    },
     className() {
       return classNames('window', {
-        'window--inactive': !this.isActive,
-        'window--minimized': this.isMinimized,
+        'window--inactive': !this.active,
+        'window--minimized': this.minimized,
         'window--maximized': this.isMaximized,
         'window--restored': this.isRestored,
-        'window--closed': this.isClosed,
+        'window--closed': this.closed,
       });
     },
     cssVars() {
@@ -114,18 +101,10 @@ export default {
     }
   },
   watch: {
-    isMinimized(next) {
+    minimized(next) {
       if (!next) return;
       this.isRestored = true;
     },
-  },
-  created() {
-    this.id = uuidv4();
-    this.registerWindow({
-      id: this.id,
-      name: this.name,
-      isMinimized: false,
-    });
   },
   mounted() {
     this.dimensions = {
@@ -151,7 +130,7 @@ export default {
 
     // CLICKABLE ACTIONS
     handleActiveWindow() {
-      if (this.isActive) {
+      if (this.active) {
         return;
       }
       this.setActiveWindow(this.id);
@@ -255,6 +234,8 @@ export default {
   min-width: var(--min-width);
   height: fit-content;
   width: fit-content;
+  max-width: 100%;
+  max-height: 100%;
   overflow: hidden;
   z-index: $z-index-window-active;
 
@@ -264,6 +245,7 @@ export default {
   }
 
   &--minimized {
+    pointer-events: none;
     transform: scale(0.75) translate(-16px, 16px);
     transform-origin: bottom left;
     opacity: (0);
@@ -283,6 +265,7 @@ export default {
   }
 
   &--closed {
+    pointer-events: none;
     transform: scale(0.95);
     transform-origin: center;
     opacity: (0);

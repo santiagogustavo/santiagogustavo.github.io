@@ -1,35 +1,34 @@
 <template>
-  <div>
-    <Window name="Hello!">
-      <v-row>
-        <v-col class="text-center">
-          <img src="/v.png" alt="Vuetify.js" class="mb-5 img" />
-          <blockquote class="blockquote">
-            &#8220;First, solve the problem. Then, write the code.&#8221;
-            <footer>
-              <small>
-                <em>&mdash;John Johnson</em>
-              </small>
-            </footer>
-          </blockquote>
-        </v-col>
-      </v-row>
-    </Window>
-    <Window name="blob"> ASDASD </Window>
-    <Window name="blobie"> ASDASDAJSDAJSDUHASUDHASUDHASUDHAOUSHDUOh </Window>
-  </div>
+  <WindowManager />
 </template>
 
 <script>
-import Window from '@/components/WindowManager/Window.vue';
+import { mapActions } from 'vuex';
+
+import WindowManager from '@/components/WindowManager/WindowManager.vue';
+import Windows from '@/constants/windows';
 
 export default {
   name: 'Inspire',
   components: {
-    Window,
+    WindowManager,
   },
   layout: 'desktop',
-  template: 'default',
+  created() {
+    this.registerWindow({
+      name: 'Hello!',
+      component: Windows.INSPIRE,
+    });
+    this.registerWindow({
+      name: 'BLOBBBBBBBB',
+      component: Windows.BLOB,
+    });
+  },
+  methods: {
+    ...mapActions({
+      registerWindow: 'windowManager/registerWindow',
+    }),
+  },
 };
 </script>
 
