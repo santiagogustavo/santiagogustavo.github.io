@@ -1,16 +1,22 @@
 <template>
-  <WindowManager />
+  <div>
+    <Blob />
+    <WindowManager />
+  </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex';
 
 import WindowManager from '@/components/WindowManager/WindowManager.vue';
+import Blob from '@/components/Applications/Blob.vue';
+
 import Windows from '@/constants/windows';
 
 export default {
   name: 'Inspire',
   components: {
+    Blob,
     WindowManager,
   },
   layout: 'desktop',

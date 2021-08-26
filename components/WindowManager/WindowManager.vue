@@ -1,5 +1,5 @@
 <template>
-  <section class="desktop-renderer">
+  <section class="window-manager">
     <Window
       v-for="window in windows"
       :id="window.id"
@@ -21,7 +21,7 @@ import Components from '@/components/WindowManager/ComponentMapper';
 import Window from '@/components/WindowManager/Window.vue';
 
 export default {
-  name: 'DesktopRenderer',
+  name: 'WindowManager',
   components: {
     Window,
   },
@@ -43,7 +43,7 @@ export default {
 </script>
 
 <style lang="scss">
-.desktop-renderer {
+.window-manager {
   width: 100%;
   height: 100%;
 }

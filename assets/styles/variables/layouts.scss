@@ -3,3 +3,7 @@ $taskbar-height: 32px;
 
 // WINDOW
 $window-maximized-height: calc(100% - #{$taskbar-height});
+
+// DESKTOP ICON
+$desktop-icon-size: 64px;
+$desktop-icon-img-size: 32px;

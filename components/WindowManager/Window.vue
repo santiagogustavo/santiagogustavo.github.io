@@ -222,6 +222,19 @@ export default {
 </script>
 
 <style lang="scss">
+@keyframes open {
+  0% {
+    transform: scale(0.95);
+    transform-origin: center;
+    opacity: (0);
+  }
+  100% {
+    transform: scale(1);
+    transform-origin: center;
+    opacity: (1);
+  }
+}
+
 .window {
   position: absolute;
   top: var(--position-y);
@@ -237,6 +250,7 @@ export default {
   max-width: 100%;
   max-height: 100%;
   overflow: hidden;
+  animation: open 250ms $cubic-bezier-ease;
   z-index: $z-index-window-active;
 
   &--inactive {
