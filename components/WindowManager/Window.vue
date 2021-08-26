@@ -10,10 +10,10 @@
         {{ name }}
       </div>
       <div class="window__header__buttons" @click="handleActiveWindow">
-        <v-btn icon small @click.stop="handleMinimizeWindow">
+        <v-btn v-if="minimizable" icon small @click.stop="handleMinimizeWindow">
           <v-icon>mdi-window-minimize</v-icon>
         </v-btn>
-        <v-btn icon small @click.stop="handleToggleMaximize">
+        <v-btn v-if="maximizable" icon small @click.stop="handleToggleMaximize">
           <v-icon
             >mdi-{{
               isMaximized ? 'window-restore' : 'window-maximize'
@@ -57,6 +57,14 @@ export default {
       type: Boolean,
       required: true,
     },
+    minimizable: {
+      type: Boolean,
+      default: false,
+    },
+    maximizable: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -98,7 +106,7 @@ export default {
         '--min-height': `${this.dimensions.height}px`,
         '--min-width': `${this.dimensions.width}px`,
       };
-    }
+    },
   },
   watch: {
     minimized(next) {
@@ -182,8 +190,16 @@ export default {
       const deltaY = event.pageY - this.cursorPosition.y;
 
       // Clamping avoids that the window is rendered out of the document
-      const newX = clamp(0, this.position.x + deltaX, this.window.innerWidth - this.dimensions.width);
-      const newY = clamp(0, this.position.y + deltaY, this.window.innerHeight - this.dimensions.height);
+      const newX = clamp(
+        0,
+        this.position.x + deltaX,
+        this.window.innerWidth - this.dimensions.width
+      );
+      const newY = clamp(
+        0,
+        this.position.y + deltaY,
+        this.window.innerHeight - this.dimensions.height
+      );
 
       this.updatePosition(newX, newY);
       this.updateCursorPosition(event.pageX, event.pageY);
@@ -195,12 +211,14 @@ export default {
     },
     updatePosition(x, y) {
       this.position = {
-        x, y,
+        x,
+        y,
       };
     },
     updateCursorPosition(x, y) {
       this.cursorPosition = {
-        x, y,
+        x,
+        y,
       };
     },
 
@@ -214,7 +232,7 @@ export default {
     centralize() {
       this.updatePosition(
         (window.innerWidth - this.$refs.window.clientWidth) / 2,
-        (window.innerHeight - this.$refs.window.clientHeight) / 2,
+        (window.innerHeight - this.$refs.window.clientHeight) / 2
       );
     },
   },
@@ -292,23 +310,23 @@ export default {
     color: $color-white;
     border-bottom: window-border();
     height: fit-content;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 
     &__name {
       width: 100%;
       height: auto;
       line-height: 100%;
-      padding-left: 8px;
-      padding-top: 5px;
-      padding-bottom: 5px;
+      padding: 5px 8px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+
       &:hover {
         cursor: $cursor-move;
       }
     }
 
     &__buttons {
+      display: flex;
       border-left: window-border($color-secondary-light);
       button {
         border-radius: 0;

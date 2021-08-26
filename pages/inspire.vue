@@ -24,10 +24,14 @@ export default {
     this.registerWindow({
       name: 'Hello!',
       component: Windows.INSPIRE,
+      maximizable: true,
+      minimizable: true,
     });
     this.registerWindow({
       name: 'BLOBBBBBBBB',
       component: Windows.BLOB,
+      maximizable: false,
+      minimizable: true,
     });
   },
   methods: {

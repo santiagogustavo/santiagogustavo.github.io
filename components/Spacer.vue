@@ -10,7 +10,7 @@ export default {
 
 <style lang="scss">
 .spacer {
-  flex: 1;
+  flex: 0;
   width: 100%;
 }
 </style>

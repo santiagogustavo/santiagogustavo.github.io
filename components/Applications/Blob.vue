@@ -18,6 +18,8 @@ export default {
     return {
       name: 'BLOBBBBBBBB',
       component: Windows.BLOB,
+      minimizable: true,
+      maximizable: false,
       Dolphin,
     };
   },

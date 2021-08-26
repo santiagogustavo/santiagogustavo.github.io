@@ -8,6 +8,8 @@
       :closed="window.isClosed"
       :name="window.name"
       :minimized="window.isMinimized"
+      :minimizable="window.minimizable"
+      :maximizable="window.maximizable"
     >
       <component :is="getComponentByName(window.component)" />
     </Window>

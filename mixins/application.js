@@ -9,6 +9,8 @@ export default {
       this.registerWindow({
         name: this.name,
         component: this.component,
+        maximizable: this.maximizable,
+        minimizable: this.minimizable,
       });
     },
   },
