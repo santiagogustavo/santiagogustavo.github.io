@@ -1,5 +1,17 @@
 <template>
   <div
+    v-if="$vuetify.breakpoint.smAndDown"
+    v-click-outside="handleClickOutside"
+    :class="className"
+    @click="handleClickMobile"
+  >
+    <div class="desktop-icon__icon">
+      <img :src="icon" />
+    </div>
+    <span class="desktop-icon__name">{{ label }}</span>
+  </div>
+  <div
+    v-else
     v-click-outside="handleClickOutside"
     :class="className"
     @click="handleClick"
@@ -60,6 +72,13 @@ export default {
           this.isReadyForDoubleClick = false;
         }, 500);
       }
+    },
+    handleClickMobile() {
+      this.isFocused = true;
+      this.$emit('open');
+      this.doubleClickTimeout = setTimeout(() => {
+        this.isFocused = false;
+      }, 500);
     },
     handleClickOutside() {
       if (!this.isFocused) return;

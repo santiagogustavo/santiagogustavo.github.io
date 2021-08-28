@@ -403,7 +403,7 @@ export default {
   width: 100%;
   height: $window-height-mobile;
   animation: open 500ms $cubic-bezier-ease;
-  transition: z-index 750ms cubic-bezier(0,1,1,0), transition-ease(transform, 750ms);
+  transition: z-index 500ms cubic-bezier(0,1,1,0), transition-ease(transform, 500ms), transition-ease(opacity, 500ms);
 
   &__header {
     display: flex;
@@ -434,12 +434,15 @@ export default {
   }
 
   &--inactive {
+    transform: scale(0.95);
+    opacity: 0;
     z-index: $z-index-window-inactive;
   }
 
   &--minimized {
     pointer-events: none;
-    transform: translateY(100%);
+    opacity: 1 !important;
+    transform: translateY(100%) !important;
     transform-origin: bottom;
   }
 
@@ -451,7 +454,7 @@ export default {
     pointer-events: none;
     transform: scale(0.95);
     transform-origin: center;
-    opacity: (0);
+    opacity: 0;
     transition: transition-ease(all, 500ms);
   }
 }

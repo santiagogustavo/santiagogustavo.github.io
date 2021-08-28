@@ -12,6 +12,7 @@
       >
         <div class="taskview__list-content" @click="handleClickTask(window.id)">
           <div class="taskview__list-index">{{ index + 1 }}.</div>
+          <img v-if="window.icon" class="taskview__list-icon" :src="window.icon" />
           {{ window.name }}
         </div>
         <img class="taskview__list-close" :src="Close" @click="handleCloseWindow(window.id)" />
@@ -104,7 +105,7 @@ export default {
   width: 100%;
   height: $taskview-height;
   z-index: $z-index-taskview;
-  transition: all 500ms ease;
+  transition: transition-ease(all, 500ms);
   pointer-events: none;
   transform: translateY(100%);
   background: rgba(0, 0, 0, 0.7);
@@ -177,6 +178,13 @@ export default {
     font-weight: bold;
     line-height: initial;
     line-height: 32px;
+  }
+
+  &__list-icon {
+    height: 12px;
+    width: 12px;
+    object-fit: cover;
+    margin-right: 2px;
   }
 
   &__list-close {
