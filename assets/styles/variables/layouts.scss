@@ -1,9 +1,13 @@
 // TASKBAR
 $taskbar-height: 32px;
+$taskbar-clock-size: 20px;
+$taskbar-task-size: 20px;
 
 // WINDOW
 $window-maximized-height: calc(100% - #{$taskbar-height});
+$window-header-name-size: 22px;
 
 // DESKTOP ICON
 $desktop-icon-size: 64px;
 $desktop-icon-img-size: 32px;
+$desktop-icon-font-size: 18px;

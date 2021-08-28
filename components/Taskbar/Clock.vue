@@ -37,6 +37,8 @@ export default {
   justify-content: center;
   padding: 2px 8px;
   height: 100%;
+  font-family: $font-family-reactor;
+  font-size: $taskbar-clock-size;
   background: $color-taskbar-inset-background;
   border-top: 2px $color-taskbar-border-regular solid;
   border-left: 2px $color-taskbar-border-regular solid;

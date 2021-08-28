@@ -12,7 +12,7 @@ export default {
     titleTemplate: '%s - santiagogustavo.github.io',
     title: 'santiagogustavo.github.io',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'en',
     },
     meta: [
       { charset: 'utf-8' },
@@ -24,24 +24,42 @@ export default {
       { name: 'theme-color', content: '#ffffff' },
     ],
     link: [
-      { rel: 'apple-touch-icon', sizes: '180x180', href: '/icons/apple-touch-icon.png' },
-      { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/icons/favicon-32x32.png' },
-      { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/icons/favicon-16x16.png' },
+      {
+        rel: 'apple-touch-icon',
+        sizes: '180x180',
+        href: '/icons/apple-touch-icon.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        href: '/icons/favicon-32x32.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: '/icons/favicon-16x16.png',
+      },
       { rel: 'manifest', href: '/icons/site.webmanifest' },
-      { rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#5bbad5' },
+      {
+        rel: 'mask-icon',
+        href: '/icons/safari-pinned-tab.svg',
+        color: '#5bbad5',
+      },
       { rel: 'shortcut icon', href: '/icons/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href: '/fonts/Reactor7/stylesheet.css',
+      },
     ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-    '@/assets/styles/index.scss',
-  ],
+  css: ['@/assets/styles/index.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    '@/plugins/clickOutside.js',
-  ],
+  plugins: ['@/plugins/clickOutside.js'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -67,7 +85,7 @@ export default {
   axios: {},
 
   styleResources: {
-    scss: ['./assets/styles/index.scss']
+    scss: ['./assets/styles/index.scss'],
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
@@ -83,13 +101,12 @@ export default {
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
-          success: colors.green.accent3
-        }
-      }
-    }
+          success: colors.green.accent3,
+        },
+      },
+    },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-  }
-}
+  build: {},
+};

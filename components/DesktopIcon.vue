@@ -81,6 +81,10 @@ export default {
 
   &__name {
     user-select: none;
+    font-family: $font-family-reactor;
+    padding: 2px;
+    font-size: $desktop-icon-font-size;
+    line-height: 12px;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black, 1px 2px 2px black;
   }
 

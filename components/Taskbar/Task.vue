@@ -37,6 +37,8 @@ export default {
   user-select: none;
   background: $color-taskbar-background;
   color: $color-text;
+  font-family: $font-family-reactor;
+  font-size: $taskbar-task-size;
   border-top: 2px $color-taskbar-border-light solid;
   border-left: 2px $color-taskbar-border-light solid;
   border-right: 2px $color-taskbar-border-dark solid;

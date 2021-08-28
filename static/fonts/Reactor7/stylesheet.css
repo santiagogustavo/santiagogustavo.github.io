@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'Reactor7';
+    src: url('Reactor7.eot');
+    src: url('Reactor7.eot?#iefix') format('embedded-opentype'),
+        url('Reactor7.woff') format('woff'),
+        url('Reactor7.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
