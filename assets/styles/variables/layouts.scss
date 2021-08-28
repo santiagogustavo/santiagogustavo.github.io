@@ -10,7 +10,9 @@ $taskview-list-height: 64px;
 
 // WINDOW
 $window-maximized-height: calc(100% - #{$taskbar-height});
+$window-height-mobile: calc(100% - #{$taskbar-height-mobile});
 $window-header-name-size: 22px;
+$window-header-name-size-mobile: 28px;
 
 // DESKTOP ICON
 $desktop-icon-size: 64px;

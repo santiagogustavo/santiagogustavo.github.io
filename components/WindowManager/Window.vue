@@ -1,10 +1,23 @@
 <template>
   <div
+    v-if="$vuetify.breakpoint.smAndDown"
+    :class="classNameMobile"
+  >
+    <div class="window--mobile__header">
+      <div class="window--mobile__header__name">
+        {{ name }}
+      </div>
+    </div>
+    <slot />
+  </div>
+  <div
+    v-else
     ref="window"
     :class="className"
     :style="cssVars"
     @click="handleActiveWindow"
   >
+    <Watcher @created="handleCreateDesktopWindow" />
     <div class="window__header">
       <div class="window__header__name" @mousedown="handleMouseDown">
         {{ name }}
@@ -32,10 +45,16 @@
 <script>
 import { mapActions } from 'vuex';
 import classNames from 'classnames';
+
+import Watcher from '@/components/WindowManager/Watcher';
+
 import { clamp } from '@/utils/math';
 
 export default {
   name: 'Window',
+  components: {
+    Watcher,
+  },
   props: {
     id: {
       type: String,
@@ -99,6 +118,14 @@ export default {
         'window--closed': this.closed,
       });
     },
+    classNameMobile() {
+      return classNames('window--mobile', {
+        'window--mobile--minimized': this.minimized,
+        'window--mobile--inactive': !this.active,
+        'window--mobile--restored': this.isRestored,
+        'window--mobile--closed': this.closed,
+      });
+    },
     cssVars() {
       return {
         '--position-x': `${this.position.x}px`,
@@ -115,10 +142,7 @@ export default {
     },
   },
   mounted() {
-    this.dimensions = {
-      width: this.$refs.window.clientWidth,
-      height: this.$refs.window.clientHeight,
-    };
+    this.refreshDimensions();
     this.centralize();
 
     this.$nextTick(() => {
@@ -230,10 +254,23 @@ export default {
       };
     },
     centralize() {
+      if (!this.$refs.window) {
+        return;
+      }
       this.updatePosition(
         (window.innerWidth - this.$refs.window.clientWidth) / 2,
         (window.innerHeight - this.$refs.window.clientHeight) / 2
       );
+    },
+    refreshDimensions() {
+      this.dimensions = {
+        width: this.$refs.window?.clientWidth,
+        height: this.$refs.window?.clientHeight,
+      };
+    },
+
+    handleCreateDesktopWindow() {
+      this.refreshDimensions();
     },
   },
 };
@@ -250,26 +287,30 @@ export default {
     transform: scale(1);
     transform-origin: center;
     opacity: (1);
+    filter: brightness(1);
   }
 }
 
 .window {
-  position: absolute;
+  border: window-border();
   top: var(--position-y);
   left: var(--position-x);
-  background: url(static/imgs/bg-window.png);
-  color: $color-text;
-  border: window-border();
   box-shadow: 10px 10px 0 0 rgba(0, 0, 0, 0.5);
-  min-height: var(--min-height);
-  min-width: var(--min-width);
   height: fit-content;
   width: fit-content;
-  max-width: 100%;
-  max-height: 100%;
-  overflow: hidden;
   animation: open 250ms $cubic-bezier-ease;
-  z-index: $z-index-window-active;
+
+  &, &--mobile {
+    position: absolute;
+    background: url(static/imgs/bg-window.png);
+    color: $color-text;
+    min-height: var(--min-height);
+    min-width: var(--min-width);
+    max-width: 100%;
+    max-height: 100%;
+    overflow: hidden;
+    z-index: $z-index-window-active;
+  }
 
   &--inactive {
     filter: brightness(0.85);
@@ -340,6 +381,49 @@ export default {
 
   &--maximized &__header__name:hover {
     cursor: $cursor-arrow;
+  }
+}
+
+.window--mobile {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $window-height-mobile;
+  animation: open 500ms $cubic-bezier-ease;
+  transition: z-index 1000ms cubic-bezier(0,1,1,0), transition-ease(transform, 1000ms);
+
+  &__header {
+    display: flex;
+    background-color: $color-secondary;
+    color: $color-white;
+    border-bottom: window-border($color-secondary-light);
+    height: fit-content;
+
+    &__name {
+      width: 100%;
+      height: auto;
+      padding: 0 8px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      user-select: none;
+      font-family: $font-family-reactor;
+      font-size: $window-header-name-size-mobile;
+    }
+  }
+
+  &--inactive {
+    z-index: $z-index-window-inactive;
+  }
+
+  &--minimized {
+    pointer-events: none;
+    transform: translateY(100%);
+    transform-origin: bottom;
+  }
+
+  &--restored {
+    transform-origin: bottom;
   }
 }
 </style>
