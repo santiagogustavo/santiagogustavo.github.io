@@ -40,6 +40,7 @@ export default {
   font-family: $font-family-reactor;
   font-size: $taskbar-clock-size;
   background: $color-taskbar-inset-background;
+  user-select: none;
   border-top: 2px $color-taskbar-border-regular solid;
   border-left: 2px $color-taskbar-border-regular solid;
   border-right: 2px $color-taskbar-border-light solid;

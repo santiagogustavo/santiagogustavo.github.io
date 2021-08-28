@@ -319,6 +319,7 @@ export default {
       padding: 0 8px;
       white-space: nowrap;
       text-overflow: ellipsis;
+      user-select: none;
       overflow: hidden;
       font-family: $font-family-reactor;
       font-size: $window-header-name-size;
