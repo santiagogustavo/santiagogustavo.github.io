@@ -44,6 +44,10 @@ export default {
   border-right: 2px $color-taskbar-border-dark solid;
   border-bottom: 2px $color-taskbar-border-dark solid;
 
+  & ~ & {
+    margin-left: 4px;
+  }
+
   &--active {
     background: $color-taskbar-inset-background;
     border-top: 2px $color-taskbar-border-regular solid;

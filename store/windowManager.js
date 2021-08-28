@@ -43,6 +43,26 @@ export const mutations = {
     const { [payload]: removed, ...windows } = state.windows;
     state.windows = windows;
   },
+  MINIMIZE_ALL: (state) => {
+    const mutatedWindows = { ...state.windows };
+    Object.keys(mutatedWindows).forEach(id => {
+      mutatedWindows[id] = { ...mutatedWindows[id], isMinimized: true };
+    });
+    state.windows = mutatedWindows;
+    state.activeWindow = undefined;
+  },
+  MINIMIZE_CURRENT_WINDOW: (state) => {
+    if (!state.activeWindow) {
+      return;
+    }
+    state.windows = {
+      ...state.windows,
+      [state.activeWindow]: {
+        ...state.windows[state.activeWindow],
+        isMinimized: true,
+      },
+    };
+  },
   SET_ACTIVE_WINDOW: (state, payload) => {
     state.activeWindow = payload;
   },
@@ -52,7 +72,7 @@ export const mutations = {
     );
     const lastActiveWindow = remainingWindows.length
       ? remainingWindows[remainingWindows.length - 1].id
-      : '';
+      : undefined;
     state.activeWindow = lastActiveWindow;
   }
 };
@@ -82,6 +102,13 @@ export const actions = {
     setTimeout(() => {
       commit('REMOVE_WINDOW', id);
     }, 500);
+  },
+  minimizeAll({ commit }, id) {
+    commit('MINIMIZE_ALL');
+  },
+  minimizeCurrentWindow({ commit }) {
+    commit('MINIMIZE_CURRENT_WINDOW');
+    commit('SET_LAST_ACTIVE_WINDOW');
   },
   setActiveWindow({ commit }, id) {
     commit('SET_ACTIVE_WINDOW', id);

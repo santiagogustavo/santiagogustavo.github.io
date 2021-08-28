@@ -314,16 +314,14 @@ export default {
     &__name {
       width: 100%;
       height: auto;
-      display: flex;
-      align-items: center;
-      padding: 0 8px;
+      padding: 8px;
       white-space: nowrap;
       text-overflow: ellipsis;
-      user-select: none;
       overflow: hidden;
+      user-select: none;
       font-family: $font-family-reactor;
       font-size: $window-header-name-size;
-      line-height: $window-header-name-size;
+      line-height: 12px;
 
       &:hover {
         cursor: $cursor-move;

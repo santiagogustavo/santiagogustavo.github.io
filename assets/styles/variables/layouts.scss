@@ -1,7 +1,12 @@
 // TASKBAR
 $taskbar-height: 32px;
+$taskbar-height-mobile: 42px;
 $taskbar-clock-size: 20px;
 $taskbar-task-size: 20px;
+
+// TASKVIEW
+$taskview-height: calc(100% - #{$taskbar-height-mobile});
+$taskview-list-height: 64px;
 
 // WINDOW
 $window-maximized-height: calc(100% - #{$taskbar-height});
