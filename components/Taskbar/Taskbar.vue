@@ -20,6 +20,7 @@
       :active="isWindowActive(window.id)"
       @click.native="handleClickTask(window.id)"
     >
+      <img v-if="window.icon" class="taskbar__icon" :src="window.icon" />
       {{ window.name }}
     </Task>
     <Spacer />
@@ -119,6 +120,13 @@ export default {
     border-left: 2px $color-taskbar-border-light solid;
     border-right: 2px $color-taskbar-border-dark solid;
     border-bottom: 2px $color-taskbar-border-dark solid;
+  }
+
+  &__icon {
+    height: 12px;
+    width: 12px;
+    object-fit: cover;
+    margin-right: 2px;
   }
 
   &--mobile {

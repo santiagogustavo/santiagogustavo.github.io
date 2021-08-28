@@ -7,6 +7,7 @@
       :active="isWindowActive(window.id)"
       :closed="window.isClosed"
       :name="window.name"
+      :icon="window.icon"
       :minimized="window.isMinimized"
       :minimizable="window.minimizable"
       :maximizable="window.maximizable"

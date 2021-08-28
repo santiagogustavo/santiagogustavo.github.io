@@ -1,7 +1,7 @@
 <template>
   <DesktopIcon
-    :icon="Dolphin"
     label="Totally not a virus trust me i'm a dolphin"
+    :icon="icon"
     @open="handleOpenApplication"
   />
 </template>
@@ -18,9 +18,9 @@ export default {
     return {
       name: 'BLOBBBBBBBB',
       component: Windows.BLOB,
+      icon: Dolphin,
       minimizable: true,
       maximizable: false,
-      Dolphin,
     };
   },
 };

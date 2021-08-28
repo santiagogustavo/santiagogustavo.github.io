@@ -5,6 +5,7 @@
   >
     <div class="window--mobile__header">
       <div class="window--mobile__header__name">
+        <img v-if="icon" class="window--mobile__header__icon" :src="icon" />
         {{ name }}
       </div>
     </div>
@@ -20,6 +21,7 @@
     <Watcher @created="handleCreateDesktopWindow" />
     <div class="window__header">
       <div class="window__header__name" @mousedown="handleMouseDown">
+        <img v-if="icon" class="window__header__icon" :src="icon" />
         {{ name }}
       </div>
       <div class="window__header__buttons" @click="handleActiveWindow">
@@ -63,6 +65,10 @@ export default {
     name: {
       type: String,
       required: true,
+    },
+    icon: {
+      type: String,
+      default: undefined,
     },
     active: {
       type: Boolean,
@@ -352,6 +358,13 @@ export default {
     border-bottom: window-border();
     height: fit-content;
 
+    &__icon {
+      height: 14px;
+      width: 14px;
+      object-fit: cover;
+      margin-right: 2px;
+    }
+
     &__name {
       width: 100%;
       height: auto;
@@ -390,7 +403,7 @@ export default {
   width: 100%;
   height: $window-height-mobile;
   animation: open 500ms $cubic-bezier-ease;
-  transition: z-index 1000ms cubic-bezier(0,1,1,0), transition-ease(transform, 1000ms);
+  transition: z-index 750ms cubic-bezier(0,1,1,0), transition-ease(transform, 750ms);
 
   &__header {
     display: flex;
@@ -398,6 +411,14 @@ export default {
     color: $color-white;
     border-bottom: window-border($color-secondary-light);
     height: fit-content;
+
+    &__icon {
+      height: 24px;
+      width: 24px;
+      object-fit: cover;
+      margin-right: 2px;
+      transform: translateY(4px);
+    }
 
     &__name {
       width: 100%;

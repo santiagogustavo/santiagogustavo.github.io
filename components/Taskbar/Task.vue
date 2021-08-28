@@ -27,7 +27,7 @@ export default {
 .taskbar__task {
   flex: 1;
   cursor: $cursor-pointer;
-  max-width: 100px;
+  max-width: 120px;
   height: 100%;
   padding: 2px 4px;
   line-height: 100%;
