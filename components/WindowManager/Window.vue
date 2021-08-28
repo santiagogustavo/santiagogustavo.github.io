@@ -425,5 +425,13 @@ export default {
   &--restored {
     transform-origin: bottom;
   }
+
+  &--closed {
+    pointer-events: none;
+    transform: scale(0.95);
+    transform-origin: center;
+    opacity: (0);
+    transition: transition-ease(all, 500ms);
+  }
 }
 </style>

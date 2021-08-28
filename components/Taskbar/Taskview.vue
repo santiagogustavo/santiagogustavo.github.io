@@ -4,17 +4,19 @@
       <div class="taskview__label">Open tasks</div>
       <img class="taskview__close" :src="CloseInv" @click="handleClickClose" />
     </section>
-    <section class="taskview__tasks">
+    <transition-group name="slide-right" class="taskview__tasks">
       <Task
         v-for="(window, index) in openWindows"
         :key="window.id"
         class="taskview__list-task"
-        @click.native="handleClickTask(window.id)"
       >
-        <div class="taskview__list-index">{{ index + 1 }}.</div>
-        {{ window.name }}
+        <div class="taskview__list-content" @click="handleClickTask(window.id)">
+          <div class="taskview__list-index">{{ index + 1 }}.</div>
+          {{ window.name }}
+        </div>
+        <img class="taskview__list-close" :src="Close" @click="handleCloseWindow(window.id)" />
       </Task>
-    </section>
+    </transition-group>
   </section>
 </template>
 
@@ -22,6 +24,7 @@
 import classNames from 'classnames';
 import { mapActions, mapGetters } from 'vuex';
 
+import Close from '@/assets/imgs/buttons/close.png';
 import CloseInv from '@/assets/imgs/buttons/close-inv.png';
 
 import Task from '@/components/Taskbar/Task.vue';
@@ -39,6 +42,7 @@ export default {
   },
   data() {
     return {
+      Close,
       CloseInv,
     };
   },
@@ -58,6 +62,7 @@ export default {
   methods: {
     ...mapActions({
       restoreWindow: 'windowManager/restoreWindow',
+      closeWindow: 'windowManager/closeWindow',
     }),
     handleClickTask(id) {
       this.handleClickClose();
@@ -66,11 +71,32 @@ export default {
     handleClickClose() {
       this.$emit('close');
     },
+    handleCloseWindow(id) {
+      this.closeWindow(id);
+    },
   },
 };
 </script>
 
 <style lang="scss">
+.slide-right-enter-active,
+.slide-right-leave-active {
+  transition-duration: 250ms;
+  transition-property: height, opacity, transform;
+  transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
+  overflow: hidden;
+}
+
+.slide-right-leave-active {
+  opacity: 0;
+  transform: translate(2em, 0);
+}
+
+.slide-right-enter {
+  opacity: 0;
+  transform: translate(-2em, 0);
+}
+
 .taskview {
   position: absolute;
   top: 0;
@@ -131,6 +157,8 @@ export default {
     max-width: 100%;
     max-height: $taskview-list-height;
     line-height: 14px;
+    display: flex;
+    align-items: center;
 
     & ~ & {
       margin-left: 0;
@@ -138,10 +166,25 @@ export default {
     }
   }
 
+  &__list-content {
+    height: 100%;
+    width: 100%;
+    margin: auto;
+  }
+
   &__list-index {
     font-size: 32px;
     font-weight: bold;
     line-height: initial;
+    line-height: 32px;
+  }
+
+  &__list-close {
+    margin-right: 8px;
+    display: block;
+    height: 24px;
+    width: 24px;
+    cursor: $cursor-pointer;
   }
 }
 </style>
