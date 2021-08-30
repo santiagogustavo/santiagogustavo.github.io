@@ -87,6 +87,7 @@ export default {
       }
     },
     handleClickBack() {
+      navigator.vibrate([30]);
       if (this.isTaskviewOpen) {
         this.handleCloseTaskview();
       } else if (this.isActiveModal) {
@@ -96,6 +97,7 @@ export default {
       }
     },
     handleClickHome() {
+      navigator.vibrate([30]);
       if (this.isTaskviewOpen) {
         this.handleCloseTaskview();
       }
@@ -105,6 +107,7 @@ export default {
       this.minimizeAll();
     },
     handleClickTasks() {
+      navigator.vibrate([30]);
       this.isTaskviewOpen = !this.isTaskviewOpen;
     },
     handleCloseTaskview() {
