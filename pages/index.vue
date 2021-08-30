@@ -35,7 +35,7 @@ export default {
       return this.navigator?.userAgent.split(' ');
     },
     processor() {
-      return this.navigator?.oscpu;
+      return this.userAgent?.slice(1, -2).join('').replace('(', '').replace(')', '');
     },
     master() {
       return this.userAgent.slice(-1).join('');

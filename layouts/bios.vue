@@ -116,6 +116,7 @@ $screen-background: #121010;
 
   &__app {
     transform: translateY(-100%);
+    padding-right: 108px;
   }
 }
 </style>
