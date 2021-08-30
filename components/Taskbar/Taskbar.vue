@@ -64,11 +64,15 @@ export default {
     openWindows() {
       return Object.values(this.windows).filter((window) => !window.isClosed);
     },
+    isActiveModal() {
+      return !!this.windows[this.activeWindow]?.modal;
+    },
   },
   methods: {
     ...mapActions({
       minimizeWindow: 'windowManager/minimizeWindow',
       restoreWindow: 'windowManager/restoreWindow',
+      closeWindow: 'windowManager/closeWindow',
       minimizeAll: 'windowManager/minimizeAll',
       minimizeCurrentWindow: 'windowManager/minimizeCurrentWindow',
     }),
@@ -85,12 +89,19 @@ export default {
     handleClickBack() {
       if (this.isTaskviewOpen) {
         this.handleCloseTaskview();
+      } else if (this.isActiveModal) {
+        this.closeWindow(this.activeWindow);
       } else {
         this.minimizeCurrentWindow();
       }
     },
     handleClickHome() {
-      this.handleCloseTaskview();
+      if (this.isTaskviewOpen) {
+        this.handleCloseTaskview();
+      }
+      if (this.isActiveModal) {
+        this.closeWindow(this.activeWindow);
+      }
       this.minimizeAll();
     },
     handleClickTasks() {

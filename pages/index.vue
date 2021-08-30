@@ -36,7 +36,7 @@ export default {
     clearInterval(this.stepInterval);
   },
   created() {
-    this.stepInterval = setInterval(this.handleStepsInterval, 2500);
+    this.stepInterval = setInterval(this.handleStepsInterval, 2000);
   },
   mounted() {
     const browser = Bowser.getParser(window.navigator.userAgent);

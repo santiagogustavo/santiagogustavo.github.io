@@ -46,7 +46,8 @@ export const mutations = {
   MINIMIZE_ALL: (state) => {
     const mutatedWindows = { ...state.windows };
     Object.keys(mutatedWindows).forEach(id => {
-      mutatedWindows[id] = { ...mutatedWindows[id], isMinimized: true };
+      const { modal } = mutatedWindows[id];
+      mutatedWindows[id] = { ...mutatedWindows[id], isMinimized: !modal && true };
     });
     state.windows = mutatedWindows;
     state.activeWindow = undefined;
