@@ -25,10 +25,10 @@
         {{ name }}
       </div>
       <div class="window__header__buttons" @click="handleActiveWindow">
-        <v-btn v-if="minimizable" icon small @click.stop="handleMinimizeWindow">
+        <v-btn v-if="minimizable && !modal" icon small @click.stop="handleMinimizeWindow">
           <v-icon>mdi-window-minimize</v-icon>
         </v-btn>
-        <v-btn v-if="maximizable" icon small @click.stop="handleToggleMaximize">
+        <v-btn v-if="maximizable && !modal" icon small @click.stop="handleToggleMaximize">
           <v-icon
             >mdi-{{
               isMaximized ? 'window-restore' : 'window-maximize'
@@ -330,6 +330,8 @@ export default {
   height: fit-content;
   width: fit-content;
   animation: open 250ms $cubic-bezier-ease;
+  display: flex;
+  flex-direction: column;
 
   &, &--mobile {
     position: absolute;

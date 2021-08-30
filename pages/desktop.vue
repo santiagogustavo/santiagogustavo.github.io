@@ -1,5 +1,6 @@
 <template>
   <div>
+    <About />
     <Blob />
     <Shutdown />
     <WindowManager />
@@ -10,15 +11,17 @@
 import { mapActions } from 'vuex';
 
 import WindowManager from '@/components/WindowManager/WindowManager.vue';
+import About from '@/components/Applications/About.vue';
 import Blob from '@/components/Applications/Blob.vue';
 import Shutdown from '@/components/Applications/Shutdown.vue';
 
 import Windows from '@/constants/windows';
 
 export default {
-  name: 'Inspire',
+  name: 'Desktop',
   components: {
     WindowManager,
+    About,
     Blob,
     Shutdown,
   },
@@ -26,14 +29,8 @@ export default {
   created() {
     this.registerWindow({
       name: 'Hello!',
-      component: Windows.INSPIRE,
+      component: Windows.ABOUT,
       maximizable: true,
-      minimizable: true,
-    });
-    this.registerWindow({
-      name: 'BLOBBBBBBBB',
-      component: Windows.BLOB,
-      maximizable: false,
       minimizable: true,
     });
   },

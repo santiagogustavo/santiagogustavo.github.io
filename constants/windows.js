@@ -1,5 +1,5 @@
 export default {
   BLOB: 'BLOB',
-  INSPIRE: 'INSPIRE',
+  ABOUT: 'ABOUT',
   SHUTDOWN: 'SHUTDOWN',
 };

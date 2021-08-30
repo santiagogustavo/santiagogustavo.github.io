@@ -1,24 +1,24 @@
 <template>
   <DesktopIcon
-    label="Turn off computer"
+    label="About me"
     :icon="icon"
     @open="handleOpenApplication"
   />
 </template>
 
 <script>
-import Shutdown from '@/assets/imgs/icons/shutdown.png';
+import Santiago from '@/assets/imgs/icons/santiago.png';
 import Windows from '@/constants/windows';
 import ApplicationMixin from '@/mixins/application';
 
 export default {
-  name: 'ApplicationShutdown',
+  name: 'ApplicationAbout',
   mixins: [ApplicationMixin],
   data() {
     return {
-      name: 'Turn off computer',
-      component: Windows.SHUTDOWN,
-      icon: Shutdown,
+      name: 'SANTIAGO STRIKES AGAIN!',
+      component: Windows.ABOUT,
+      icon: Santiago,
       minimizable: false,
       maximizable: false,
       modal: true,
