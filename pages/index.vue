@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import Bowser from "bowser";
+
 export default {
   name: 'Boot',
   layout: 'bios',
@@ -25,30 +27,22 @@ export default {
     return {
       currentStep: 0,
       stepInterval: undefined,
+      processor: undefined,
+      master: undefined,
+      slave: undefined,
     };
-  },
-  computed: {
-    navigator() {
-      return window.navigator;
-    },
-    userAgent() {
-      return this.navigator?.userAgent.split(' ');
-    },
-    processor() {
-      return this.userAgent?.slice(1, -2).join('').replace('(', '').replace(')', '');
-    },
-    master() {
-      return this.userAgent.slice(-1).join('');
-    },
-    slave() {
-      return this.userAgent.slice(-2, -1).join('');
-    },
   },
   beforeDestroy() {
     clearInterval(this.stepInterval);
   },
   created() {
     this.stepInterval = setInterval(this.handleStepsInterval, 2500);
+  },
+  mounted() {
+    const browser = Bowser.getParser(window.navigator.userAgent);
+    this.processor = `${browser.getOSName()}/${browser.getOSVersion()}`;
+    this.master = `${browser.getEngineName()}/${browser.getEngine()?.version}`;
+    this.slave = browser.getPlatformType();
   },
   methods: {
     handleStepsInterval() {

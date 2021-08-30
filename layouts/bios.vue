@@ -19,6 +19,7 @@
         />
       </header>
       <div
+        v-if="app"
         :class="
           $vuetify.breakpoint.smAndDown ? 'bios__app--mobile' : 'bios__app'
         "
@@ -31,6 +32,8 @@
 </template>
 
 <script>
+import Bowser from 'bowser';
+
 import Award from '@/assets/imgs/award.png';
 import EnergyStar from '@/assets/imgs/energystar.png';
 
@@ -40,15 +43,12 @@ export default {
     return {
       Award,
       EnergyStar,
+      app: undefined,
     };
   },
-  computed: {
-    navigator() {
-      return window.navigator;
-    },
-    app() {
-      return `${this.navigator?.appCodeName}/${this.navigator?.appVersion}`;
-    },
+  mounted() {
+    const browser = Bowser.getParser(window.navigator.userAgent);
+    this.app = `${browser.getBrowserName()}/${browser.getBrowserVersion()}`;
   },
 };
 </script>
@@ -114,8 +114,11 @@ $screen-background: #121010;
     }
   }
 
-  &__app {
+  &__app, &__app--mobile {
     font-family: $font-family-ibm;
+  }
+
+  &__app {
     transform: translateY(-100%);
     padding-right: 108px;
   }
