@@ -1,5 +1,5 @@
 <template>
-  <v-app dark class="desktop">
+  <v-app dark :class="className">
     <section class="desktop__page">
       <Nuxt />
     </section>
@@ -8,11 +8,29 @@
 </template>
 
 <script>
+import classNames from 'classnames';
 import Taskbar from '@/components/Taskbar/Taskbar.vue';
 
 export default {
   components: {
     Taskbar,
+  },
+  data() {
+    return {
+      isTurnOff: false,
+    };
+  },
+  computed: {
+    className() {
+      return classNames('desktop', {
+        'desktop--turn-off': this.isTurnOff,
+      });
+    },
+  },
+  created() {
+    this.$nuxt.$on('turnoff', () => {
+      this.isTurnOff = true;
+    });
   },
 };
 </script>
@@ -22,7 +40,11 @@ export default {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background: none !important;
+  background: url(static/imgs/bg.png) !important;
+
+  &--turn-off {
+    animation: turn-off 0.55s $ease-out-quint forwards;
+  }
 
   &__page {
     height: 100%;

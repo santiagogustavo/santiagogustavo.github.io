@@ -52,6 +52,10 @@ export default {
         rel: 'stylesheet',
         href: '/fonts/Reactor7/stylesheet.css',
       },
+      {
+        rel: 'stylesheet',
+        href: '/fonts/IBM/stylesheet.css',
+      },
     ],
   },
 

@@ -1,6 +1,8 @@
 @import './colors.scss';
+@import './easings.scss';
 @import './layouts.scss';
 @import './zindexes.scss';
+@import './animations.scss';
 
-$cubic-bezier-ease: cubic-bezier(0.25, 1, 0.5, 1);
 $font-family-reactor: 'Reactor7', sans-serif;
+$font-family-ibm: 'Web437 IBM VGA 8x16', sans-serif;

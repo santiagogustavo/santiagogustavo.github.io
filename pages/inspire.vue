@@ -1,6 +1,7 @@
 <template>
   <div>
     <Blob />
+    <v-btn @click.native="$nuxt.$emit('turnoff')">CLOSE</v-btn>
     <WindowManager />
   </div>
 </template>
