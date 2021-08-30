@@ -54,7 +54,7 @@ export default {
     handleStepsInterval() {
       if (this.currentStep === 5) {
         clearInterval(this.stepInterval);
-        this.$router.push('/splash');
+        this.$router.replace('/splash');
       }
       this.currentStep++;
     },
@@ -84,6 +84,7 @@ export default {
 .boot,
 .boot--mobile {
   p {
+    font-family: $font-family-ibm;
     margin-bottom: 4px;
   }
 

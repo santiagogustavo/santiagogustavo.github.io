@@ -58,7 +58,6 @@ $screen-background: #121010;
 
 .bios {
   display: block;
-  font-family: $font-family-ibm;
   background: black !important;
   animation: turn-on 4s linear forwards;
   color: $color-text-bios !important;
@@ -84,6 +83,7 @@ $screen-background: #121010;
   }
 
   &__header {
+    font-family: $font-family-ibm;
     display: flex;
     align-items: flex-start;
   }
@@ -115,6 +115,7 @@ $screen-background: #121010;
   }
 
   &__app {
+    font-family: $font-family-ibm;
     transform: translateY(-100%);
     padding-right: 108px;
   }
