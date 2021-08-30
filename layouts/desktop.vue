@@ -27,9 +27,10 @@ export default {
       });
     },
   },
-  created() {
+  mounted() {
     this.$nuxt.$on('turnoff', () => {
       this.isTurnOff = true;
+      setTimeout(() => window.close(), 1000);
     });
   },
 };
@@ -41,6 +42,7 @@ export default {
   height: 100%;
   overflow: hidden;
   background: url(static/imgs/bg.png) !important;
+  animation: show-up 500ms forwards;
 
   &--turn-off {
     animation: turn-off 0.55s $ease-out-quint forwards;

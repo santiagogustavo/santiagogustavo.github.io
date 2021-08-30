@@ -128,7 +128,7 @@ export default {
 
   &--focused &__img, &--focused &__name {
     background: rgba(102,200,168, 0.5);
-    border-color: #68cdae;
+    border-color: $color-tertiary;
   }
 }
 </style>

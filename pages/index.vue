@@ -54,7 +54,7 @@ export default {
     handleStepsInterval() {
       if (this.currentStep === 5) {
         clearInterval(this.stepInterval);
-        this.$router.push('/desktop');
+        this.$router.push('/splash');
       }
       this.currentStep++;
     },
