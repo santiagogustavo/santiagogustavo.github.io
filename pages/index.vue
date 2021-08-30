@@ -1,77 +1,100 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
-      <v-card class="logo py-4 d-flex justify-center">
-        <NuxtLogo />
-        <VuetifyLogo />
-      </v-card>
-      <v-card>
-        <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
-        </v-card-title>
-        <v-card-text>
-          <p>Vuetify is a progressive Material Design component framework for Vue.js. It was designed to empower developers to create amazing applications.</p>
-          <p>
-            For more information on Vuetify, check out the <a
-              href="https://vuetifyjs.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              documentation
-            </a>.
-          </p>
-          <p>
-            If you have questions, please join the official <a
-              href="https://chat.vuetifyjs.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="chat"
-            >
-              discord
-            </a>.
-          </p>
-          <p>
-            Find a bug? Report it on the github <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="contribute"
-            >
-              issue board
-            </a>.
-          </p>
-          <p>Thank you for developing with Vuetify and I look forward to bringing more exciting features in the future.</p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
-          </div>
-          <hr class="my-3">
-          <a
-            href="https://nuxtjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt Documentation
-          </a>
-          <br>
-          <a
-            href="https://github.com/nuxt/nuxt.js"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt GitHub
-          </a>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn
-            color="primary"
-            nuxt
-            to="/inspire"
-          >
-            Continue
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-col>
-  </v-row>
+  <div :class="$vuetify.breakpoint.smAndDown ? 'boot--mobile' : 'boot'">
+    <p v-if="currentStep > 0" class="boot__processor">
+      Main Processor : {{ processor }} <span class="cursor">_</span>
+    </p>
+    <p v-if="currentStep > 1" class="boot__memory">Memory Test &nbsp;&nbsp;&nbsp;: OK <span class="cursor">_</span></p>
+    <br v-if="currentStep > 2"/>
+    <p v-if="currentStep > 2" class="boot__master">
+      Detecting Primary Master ... {{ master }}<span class="cursor">_</span>
+    </p>
+    <p v-if="currentStep > 3" class="boot__slave">
+      Detecting Primary Slave &nbsp;... {{ slave }}<span class="cursor">_</span>
+    </p>
+    <br v-if="currentStep > 4" />
+    <br v-if="currentStep > 4" />
+    <p v-if="currentStep > 4">Booting partition /dev/sda0/...<span class="cursor">_</span></p>
+  </div>
 </template>
+
+<script>
+export default {
+  name: 'Boot',
+  layout: 'bios',
+  data() {
+    return {
+      currentStep: 0,
+      stepInterval: undefined,
+    };
+  },
+  computed: {
+    navigator() {
+      return window.navigator;
+    },
+    userAgent() {
+      return this.navigator?.userAgent.split(' ');
+    },
+    processor() {
+      return this.navigator?.oscpu;
+    },
+    master() {
+      return this.userAgent.slice(-1).join('');
+    },
+    slave() {
+      return this.userAgent.slice(-2, -1).join('');
+    },
+  },
+  beforeDestroy() {
+    clearInterval(this.stepInterval);
+  },
+  created() {
+    this.stepInterval = setInterval(this.handleStepsInterval, 2500);
+  },
+  methods: {
+    handleStepsInterval() {
+      if (this.currentStep === 5) {
+        clearInterval(this.stepInterval);
+        this.$router.push('/desktop');
+      }
+      this.currentStep++;
+    },
+  },
+};
+</script>
+
+<style lang="scss">
+@keyframes cursor {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.cursor {
+  display: none;
+  color: white;
+  animation: cursor 500ms step-start infinite;
+}
+
+.boot,
+.boot--mobile {
+  p {
+    margin-bottom: 4px;
+  }
+
+  p:last-of-type {
+    .cursor {
+      display: inline;
+    }
+  }
+}
+
+.boot--mobile {
+  margin-top: 16px;
+}
+</style>
