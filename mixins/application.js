@@ -12,6 +12,7 @@ export default {
         icon: this.icon,
         maximizable: this.maximizable,
         minimizable: this.minimizable,
+        modal: this.modal,
       });
     },
   },

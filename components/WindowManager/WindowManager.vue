@@ -11,8 +11,9 @@
       :minimized="window.isMinimized"
       :minimizable="window.minimizable"
       :maximizable="window.maximizable"
+      :modal="window.modal"
     >
-      <component :is="getComponentByName(window.component)" />
+      <component :is="getComponentByName(window.component)" :id="window.id" />
     </Window>
   </section>
 </template>

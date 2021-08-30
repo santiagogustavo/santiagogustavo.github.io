@@ -18,7 +18,7 @@
     :style="cssVars"
     @click="handleActiveWindow"
   >
-    <Watcher @created="handleCreateDesktopWindow" />
+    <Watcher @created="refreshDimensions" />
     <div class="window__header">
       <div class="window__header__name" @mousedown="handleMouseDown">
         <img v-if="icon" class="window__header__icon" :src="icon" />
@@ -90,6 +90,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    modal: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -129,7 +133,9 @@ export default {
         'window--mobile--minimized': this.minimized,
         'window--mobile--inactive': !this.active,
         'window--mobile--restored': this.isRestored,
-        'window--mobile--closed': this.closed,
+        'window--mobile--closed': this.closed && !this.modal,
+        'window--mobile--modal': this.modal,
+        'window--mobile--modal--closed': this.closed && this.modal,
       });
     },
     cssVars() {
@@ -146,6 +152,15 @@ export default {
       if (!next) return;
       this.isRestored = true;
     },
+    closed(next) {
+      if (!next || !this.modal) return;
+      this.$nuxt.$emit('modal', false);
+    },
+  },
+  created() {
+    if (this.modal) {
+      this.$nuxt.$emit('modal', true);
+    }
   },
   mounted() {
     this.refreshDimensions();
@@ -274,10 +289,6 @@ export default {
         height: this.$refs.window?.clientHeight,
       };
     },
-
-    handleCreateDesktopWindow() {
-      this.refreshDimensions();
-    },
   },
 };
 </script>
@@ -291,6 +302,20 @@ export default {
   }
   100% {
     transform: scale(1);
+    transform-origin: center;
+    opacity: (1);
+    filter: brightness(1);
+  }
+}
+
+@keyframes open-modal {
+  0% {
+    transform: scale(0.95) translateY(-50%);
+    transform-origin: center;
+    opacity: (0);
+  }
+  100% {
+    transform: scale(1) translateY(-50%);
     transform-origin: center;
     opacity: (1);
     filter: brightness(1);
@@ -450,12 +475,26 @@ export default {
     transform-origin: bottom;
   }
 
-  &--closed {
+  &--closed, &--modal--closed {
     pointer-events: none;
-    transform: scale(0.95);
     transform-origin: center;
     opacity: 0;
     transition: transition-ease(all, 500ms);
+  }
+
+  &--closed {
+    transform: scale(0.95);
+  }
+
+  &--modal--closed {
+    transform: scale(0.95) translateY(-50%) !important;
+  }
+
+  &--modal {
+    animation: open-modal 500ms $cubic-bezier-ease;
+    transform: translateY(-50%);
+    height: fit-content;
+    top: 50%;
   }
 }
 </style>

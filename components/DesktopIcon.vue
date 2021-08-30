@@ -117,16 +117,16 @@ export default {
     img {
       height: 32px;
       width: 32px;
-      object-fit: cover;
+      object-fit: contain;
     }
   }
 
-  &__img, &__name {
+  &__icon, &__name {
     border: 1px dashed;
     border-color: transparent;
   }
 
-  &--focused &__img, &--focused &__name {
+  &--focused &__icon, &--focused &__name {
     background: rgba(102,200,168, 0.5);
     border-color: $color-tertiary;
   }

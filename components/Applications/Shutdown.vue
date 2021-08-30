@@ -1,13 +1,13 @@
 <template>
   <DesktopIcon
-    label="Totally not a virus trust me i'm a dolphin"
+    label="Turn off computer"
     :icon="icon"
     @open="handleOpenApplication"
   />
 </template>
 
 <script>
-import Dolphin from '@/assets/imgs/icons/dolphin.jpg';
+import Shutdown from '@/assets/imgs/icons/shutdown.png';
 import Windows from '@/constants/windows';
 import ApplicationMixin from '@/mixins/application';
 
@@ -16,11 +16,12 @@ export default {
   mixins: [ApplicationMixin],
   data() {
     return {
-      name: 'ECCOJAMS',
-      component: Windows.BLOB,
-      icon: Dolphin,
-      minimizable: true,
+      name: 'Turn off computer',
+      component: Windows.SHUTDOWN,
+      icon: Shutdown,
+      minimizable: false,
       maximizable: false,
+      modal: true,
     };
   },
 };

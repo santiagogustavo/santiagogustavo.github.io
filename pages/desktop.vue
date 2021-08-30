@@ -1,7 +1,7 @@
 <template>
   <div>
     <Blob />
-    <v-btn @click.native="$nuxt.$emit('turnoff')">CLOSE</v-btn>
+    <Shutdown />
     <WindowManager />
   </div>
 </template>
@@ -11,14 +11,16 @@ import { mapActions } from 'vuex';
 
 import WindowManager from '@/components/WindowManager/WindowManager.vue';
 import Blob from '@/components/Applications/Blob.vue';
+import Shutdown from '@/components/Applications/Shutdown.vue';
 
 import Windows from '@/constants/windows';
 
 export default {
   name: 'Inspire',
   components: {
-    Blob,
     WindowManager,
+    Blob,
+    Shutdown,
   },
   layout: 'desktop',
   created() {
