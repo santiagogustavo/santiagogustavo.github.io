@@ -1,8 +1,12 @@
 <template>
   <div :class="className">
     <About />
-    <Blob />
+    <Mail />
     <Instagram />
+    <LinkedIn />
+    <GitHub />
+    <LastFm />
+    <LeetCode />
     <Shutdown />
   </div>
 </template>
@@ -11,17 +15,25 @@
 import classNames from 'classnames';
 
 import About from '@/components/Applications/About.vue';
-import Blob from '@/components/Applications/Blob.vue';
 import Shutdown from '@/components/Applications/Shutdown.vue';
 import Instagram from '@/components/Applications/Instagram.vue';
+import LinkedIn from '@/components/Applications/LinkedIn.vue';
+import GitHub from '@/components/Applications/GitHub.vue';
+import LeetCode from '@/components/Applications/LeetCode.vue';
+import LastFm from '@/components/Applications/LastFm.vue';
+import Mail from '@/components/Applications/Mail.vue';
 
 export default {
   name: 'DesktopManager',
   components: {
     About,
-    Blob,
     Shutdown,
     Instagram,
+    LinkedIn,
+    GitHub,
+    LeetCode,
+    LastFm,
+    Mail,
   },
   computed: {
     className() {
