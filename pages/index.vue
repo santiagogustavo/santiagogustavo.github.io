@@ -40,7 +40,9 @@ export default {
   },
   mounted() {
     const browser = Bowser.getParser(window.navigator.userAgent);
-    this.processor = `${browser.getOSName()}/${browser.getOSVersion()}`;
+    const osName = browser.getOSName();
+    const osVersion = browser.getOSVersion();
+    this.processor = osVersion ? `${osName}/${osVersion}`: osName;
     this.master = `${browser.getEngineName()}/${browser.getEngine()?.version}`;
     this.slave = browser.getPlatformType();
   },
@@ -48,7 +50,7 @@ export default {
     handleStepsInterval() {
       if (this.currentStep === 5) {
         clearInterval(this.stepInterval);
-        this.$router.replace('/splash');
+        this.$router.replace('/desktop');
       }
       this.currentStep++;
     },
