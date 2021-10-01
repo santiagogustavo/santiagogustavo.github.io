@@ -17,13 +17,12 @@ export default {
   mixins: [ApplicationMixin],
   data() {
     return {
-      name: 'SANTIAGO STRIKES AGAIN!',
+      name: 'Hello!',
       component: Windows.ABOUT,
       icon: Santiago,
       type: APPLICATION_TYPES.APPLICATION,
       minimizable: false,
       maximizable: false,
-      modal: true,
     };
   },
 };

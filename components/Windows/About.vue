@@ -3,7 +3,13 @@
     <img class="window-about--mobile__avatar" :src="Santiago" />
     <div class="window-about--mobile__info">
       <img class="window-about--mobile__logo" :src="LogoVertical" />
-      <a class="window-about--mobile__link" href="https://about.me/santiagogustavo">about.me<b>/santiagogustavo</b></a>
+      <div class="window-about--mobile__disclaimer">
+        Hi there! 😁
+        <br /><br />
+        This website is under construction and will feature a complete disclaimer here soon.
+        <br /><br />
+        Close this window and interact with the links at the desktop to keep in touch. See ya soon...
+      </div>
       <v-btn class="window-about--mobile__close" @click="handleClickClose">CLOSE WINDOW</v-btn>
     </div>
   </div>
@@ -11,7 +17,13 @@
     <img class="window-about__avatar" :src="Santiago" />
     <div class="window-about__info">
       <img class="window-about__logo" :src="LogoHorizontal" />
-      <a class="window-about__link" href="https://about.me/santiagogustavo">about.me<b>/santiagogustavo</b></a>
+      <div class="window-about__disclaimer">
+        Hi there! 😁
+        <br /><br />
+        This website is under construction and will feature a complete disclaimer here soon.
+        <br /><br />
+        Interact with the links at the desktop to keep in touch. See ya soon...
+      </div>
     </div>
   </div>
 </template>
@@ -53,15 +65,42 @@ export default {
   }
 
   &__info {
+    height: 100%;
     margin-left: 8px;
     display: flex;
     flex-direction: column;
-    width: fit-content;
   }
 
   &__logo {
     height: 50px;
     width: 400px;
+    margin-bottom: 8px;
+  }
+
+  &__disclaimer {
+    position: relative;
+    width: 400px;
+    font-family: $font-family-arial;
+    font-size: 11px;
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: -38px;
+      bottom: 52px;
+      border: 0 solid;
+      display: block;
+      width: 38px;
+      height: 26px;
+      background-color: transparent;
+      border-bottom-left-radius: 50%;
+      border-bottom-right-radius: 50%;
+      box-shadow: 21px 9px 0 8px white;
+      z-index: -1;
+    }
   }
 
   &__link {
@@ -94,6 +133,16 @@ export default {
 
   &__logo {
     width: 250px;
+  }
+
+  &__disclaimer {
+    position: relative;
+    font-family: $font-family-arial;
+    font-size: 11px;
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    margin: 16px;
   }
 
   &__link {

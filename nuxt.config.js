@@ -16,7 +16,11 @@ export default {
     },
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' },
+      {
+        name: 'viewport',
+        content:
+          'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0',
+      },
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
       { name: 'msapplication-TileColor', content: '#da532c' },
@@ -55,6 +59,10 @@ export default {
       {
         rel: 'stylesheet',
         href: '/fonts/IBM/stylesheet.css',
+      },
+      {
+        rel: 'stylesheet',
+        href: '/fonts/PixelArial/stylesheet.css',
       },
     ],
   },
