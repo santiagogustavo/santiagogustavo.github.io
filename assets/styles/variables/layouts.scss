@@ -14,6 +14,11 @@ $window-height-mobile: calc(100% - #{$taskbar-height-mobile});
 $window-header-name-size: 22px;
 $window-header-name-size-mobile: 28px;
 
+// DESKTOP MANAGER
+$desktop-manager-height: calc(100vh - #{$taskbar-height});
+$desktop-manager-height-mobile: calc(100vh - #{$taskbar-height-mobile});
+$desktop-manager-padding: 8px;
+
 // DESKTOP ICON
 $desktop-icon-size: 64px;
 $desktop-icon-img-size: 32px;

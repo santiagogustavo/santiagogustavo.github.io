@@ -1,15 +1,14 @@
 <template>
   <DesktopIcon
-    label="Totally not a virus trust me i'm a dolphin"
+    label="Instagram"
     :icon="icon"
     @open="handleOpenApplication"
   />
 </template>
 
 <script>
-import Dolphin from '@/assets/imgs/icons/dolphin.jpg';
+import InstaLogo from '@/assets/imgs/icons/instagram.png';
 import { APPLICATION_TYPES } from '@/constants/applications';
-import Windows from '@/constants/windows';
 import ApplicationMixin from '@/mixins/application';
 
 export default {
@@ -17,12 +16,10 @@ export default {
   mixins: [ApplicationMixin],
   data() {
     return {
-      name: 'ECCOJAMS',
-      component: Windows.BLOB,
-      icon: Dolphin,
-      type: APPLICATION_TYPES.APPLICATION,
-      minimizable: true,
-      maximizable: false,
+      name: 'Instagram',
+      icon: InstaLogo,
+      type: APPLICATION_TYPES.LINK,
+      href: 'https://www.instagram.com/santiagogustavoo/',
     };
   },
 };

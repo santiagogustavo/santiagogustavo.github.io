@@ -112,7 +112,6 @@ export default {
     min-width: 32px;
     max-height: 32px;
     max-width: 32px;
-    overflow: hidden;
 
     img {
       height: 32px;

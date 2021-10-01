@@ -8,6 +8,7 @@
 
 <script>
 import Santiago from '@/assets/imgs/icons/santiago.png';
+import { APPLICATION_TYPES } from '@/constants/applications';
 import Windows from '@/constants/windows';
 import ApplicationMixin from '@/mixins/application';
 
@@ -19,6 +20,7 @@ export default {
       name: 'SANTIAGO STRIKES AGAIN!',
       component: Windows.ABOUT,
       icon: Santiago,
+      type: APPLICATION_TYPES.APPLICATION,
       minimizable: false,
       maximizable: false,
       modal: true,
