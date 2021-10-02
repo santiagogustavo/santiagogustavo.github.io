@@ -3,6 +3,7 @@
 @import './cursor.scss';
 
 body {
+  position: fixed;
   cursor: $cursor-arrow;
   background: black !important;
 }

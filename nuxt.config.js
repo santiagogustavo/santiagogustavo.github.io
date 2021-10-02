@@ -26,6 +26,8 @@ export default {
       { name: 'msapplication-TileColor', content: '#da532c' },
       { name: 'msapplication-config', content: '/icons/browserconfig.xml' },
       { name: 'theme-color', content: '#ffffff' },
+      { name: 'apple-mobile-web-app-capable', content: 'yes' },
+      { name: 'mobile-web-app-capable', content: 'yes' },
     ],
     link: [
       {
@@ -45,7 +47,7 @@ export default {
         sizes: '16x16',
         href: '/icons/favicon-16x16.png',
       },
-      { rel: 'manifest', href: '/icons/site.webmanifest' },
+      { rel: 'manifest', href: '/manifest.json' },
       {
         rel: 'mask-icon',
         href: '/icons/safari-pinned-tab.svg',

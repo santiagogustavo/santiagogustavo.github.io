@@ -42,8 +42,10 @@ export default {
     const browser = Bowser.getParser(window.navigator.userAgent);
     const osName = browser.getOSName();
     const osVersion = browser.getOSVersion();
+    const engineName = browser.getEngineName();
+    const engineVersion = browser.getEngine()?.version;
     this.processor = osVersion ? `${osName}/${osVersion}`: osName;
-    this.master = `${browser.getEngineName()}/${browser.getEngine()?.version}`;
+    this.master = engineVersion ? `${engineName}/${engineVersion}` : engineName;
     this.slave = browser.getPlatformType();
   },
   methods: {

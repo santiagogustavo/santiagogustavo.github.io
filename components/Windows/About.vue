@@ -118,7 +118,7 @@ export default {
   justify-content: center;
   flex-direction: column;
   padding: 16px;
-  font-family: $font-family-ibm;
+  font-family: $font-family-arial;
 
   &__avatar {
     width: 175px;
@@ -154,7 +154,7 @@ export default {
   }
 
   &__close {
-    margin-top: 32px;
+    margin-top: 8px;
   }
 }
 </style>

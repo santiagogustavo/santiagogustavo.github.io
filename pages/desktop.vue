@@ -27,8 +27,6 @@ export default {
       name: 'Hello!',
       icon: Santiago,
       component: Windows.ABOUT,
-      maximizable: true,
-      minimizable: true,
     });
   },
   methods: {

@@ -428,11 +428,15 @@ export default {
   top: 0;
   left: 0;
   width: 100%;
-  height: $window-height-mobile;
+  min-height: $window-height-mobile;
+  max-height: $window-height-mobile;
+  overflow-y: auto;
   animation: open 500ms $cubic-bezier-ease;
   transition: z-index 500ms cubic-bezier(0,1,1,0), transition-ease(transform, 500ms), transition-ease(opacity, 500ms);
 
   &__header {
+    position: sticky;
+    top: 0;
     display: flex;
     background-color: $color-secondary;
     color: $color-white;
@@ -493,6 +497,7 @@ export default {
   }
 
   &--modal {
+    min-height: initial;
     animation: open-modal 500ms $cubic-bezier-ease;
     transform: translateY(-50%);
     height: fit-content;
