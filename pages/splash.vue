@@ -43,7 +43,7 @@ export default {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background: black;
   padding: 16px;
   animation: show-up 500ms forwards;

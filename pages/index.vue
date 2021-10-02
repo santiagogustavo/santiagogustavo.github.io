@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import Bowser from "bowser";
+import Bowser from 'bowser';
 
 export default {
   name: 'Boot',
