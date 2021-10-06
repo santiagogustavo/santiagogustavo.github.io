@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'http://ws.audioscrobbler.com/2.0',
+  baseURL: 'https://ws.audioscrobbler.com/2.0',
   timeout: 10000,
 });
 
