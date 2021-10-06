@@ -7,7 +7,7 @@ export const formatTrack = track => {
   const thumbnail = selectedImg?.['#text'];
 
   const attr = track['@attr'];
-  const nowPlaying = attr?.nowPlaying === 'true';
+  const nowPlaying = attr?.nowplaying === 'true';
 
   return {
     artist: artist['#text'],
