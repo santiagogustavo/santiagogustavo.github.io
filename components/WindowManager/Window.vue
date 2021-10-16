@@ -8,6 +8,11 @@
         <img v-if="icon" class="window--mobile__header__icon" :src="icon" />
         {{ name }}
       </div>
+      <div class="window--mobile__header__buttons">
+        <v-btn icon medium @click.stop="handleCloseWindow">
+          <v-icon>mdi-window-close</v-icon>
+        </v-btn>
+      </div>
     </div>
     <slot />
   </div>
@@ -461,6 +466,16 @@ export default {
       user-select: none;
       font-family: $font-family-reactor;
       font-size: $window-header-name-size-mobile;
+    }
+
+    &__buttons {
+      display: flex;
+      align-items: center;
+      border-left: window-border($color-secondary-light);
+      button {
+        border-radius: 0;
+        color: $color-white !important;
+      }
     }
   }
 
