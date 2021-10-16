@@ -108,6 +108,7 @@ export default {
   }
 
   &__icon {
+    user-select: none;
     min-height: 32px;
     min-width: 32px;
     max-height: 32px;

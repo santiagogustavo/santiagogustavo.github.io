@@ -5,8 +5,9 @@
     <Instagram />
     <LinkedIn />
     <GitHub />
-    <LastFm />
     <LeetCode />
+    <LastFm />
+    <Discogs />
     <Shutdown />
   </div>
 </template>
@@ -22,6 +23,7 @@ import GitHub from '@/components/Applications/GitHub.vue';
 import LeetCode from '@/components/Applications/LeetCode.vue';
 import LastFm from '@/components/Applications/LastFm.vue';
 import Mail from '@/components/Applications/Mail.vue';
+import Discogs from '@/components/Applications/Discogs.vue';
 
 export default {
   name: 'DesktopManager',
@@ -34,6 +36,7 @@ export default {
     LeetCode,
     LastFm,
     Mail,
+    Discogs,
   },
   computed: {
     className() {
