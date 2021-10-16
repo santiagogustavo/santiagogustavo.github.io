@@ -67,6 +67,7 @@ export default {
     background: rgba(0, 0, 0, 0.5);
     opacity: 0;
     transition: opacity 250ms ease;
+    z-index: $z-index-window-active;
 
     &--visible {
       pointer-events: initial;
