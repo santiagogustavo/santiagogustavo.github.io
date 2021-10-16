@@ -9,6 +9,8 @@
     <LastFm />
     <Discogs />
     <Shutdown />
+
+    <Clippy />
   </div>
 </template>
 
@@ -24,6 +26,7 @@ import LeetCode from '@/components/Applications/LeetCode.vue';
 import LastFm from '@/components/Applications/LastFm.vue';
 import Mail from '@/components/Applications/Mail.vue';
 import Discogs from '@/components/Applications/Discogs.vue';
+import Clippy from '@/components/Clippy.vue';
 
 export default {
   name: 'DesktopManager',
@@ -37,6 +40,7 @@ export default {
     LastFm,
     Mail,
     Discogs,
+    Clippy,
   },
   computed: {
     className() {
@@ -50,6 +54,7 @@ export default {
 
 <style lang="scss">
 .desktop-manager {
+  position: relative;
   min-height: $desktop-manager-height;
   max-height: $desktop-manager-height;
   width: 100%;
