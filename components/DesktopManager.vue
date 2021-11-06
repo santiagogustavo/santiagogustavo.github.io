@@ -8,6 +8,7 @@
     <LeetCode />
     <LastFm />
     <Discogs />
+    <MacPlus />
     <Shutdown />
 
     <Clippy />
@@ -27,6 +28,7 @@ import LastFm from '@/components/Applications/LastFm.vue';
 import Mail from '@/components/Applications/Mail.vue';
 import Discogs from '@/components/Applications/Discogs.vue';
 import Clippy from '@/components/Clippy.vue';
+import MacPlus from '@/components/Applications/MacPlus.vue';
 
 export default {
   name: 'DesktopManager',
@@ -41,6 +43,7 @@ export default {
     Mail,
     Discogs,
     Clippy,
+    MacPlus,
   },
   computed: {
     className() {
