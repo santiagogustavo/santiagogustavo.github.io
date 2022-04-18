@@ -10,6 +10,7 @@
     <Discogs />
     <MacPlus />
     <Shutdown />
+    <GenericFolder />
 
     <Clippy />
   </div>
@@ -29,6 +30,7 @@ import Mail from '@/components/Applications/Mail.vue';
 import Discogs from '@/components/Applications/Discogs.vue';
 import Clippy from '@/components/Clippy.vue';
 import MacPlus from '@/components/Applications/MacPlus.vue';
+import GenericFolder from '@/components/Applications/GenericFolder.vue';
 
 export default {
   name: 'DesktopManager',
@@ -44,6 +46,7 @@ export default {
     Discogs,
     Clippy,
     MacPlus,
+    GenericFolder,
   },
   computed: {
     className() {
