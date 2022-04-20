@@ -3,8 +3,10 @@
     <p v-if="currentStep > 0" class="boot__processor">
       Main Processor : {{ processor }} <span class="cursor">_</span>
     </p>
-    <p v-if="currentStep > 1" class="boot__memory">Memory Test &nbsp;&nbsp;&nbsp;: OK <span class="cursor">_</span></p>
-    <br v-if="currentStep > 2"/>
+    <p v-if="currentStep > 1" class="boot__memory">
+      Memory Test &nbsp;&nbsp;&nbsp;: OK <span class="cursor">_</span>
+    </p>
+    <br v-if="currentStep > 2" />
     <p v-if="currentStep > 2" class="boot__master">
       Detecting Primary Master ... {{ master }}<span class="cursor">_</span>
     </p>
@@ -13,7 +15,9 @@
     </p>
     <br v-if="currentStep > 4" />
     <br v-if="currentStep > 4" />
-    <p v-if="currentStep > 4">Booting partition /dev/sda0/...<span class="cursor">_</span></p>
+    <p v-if="currentStep > 4">
+      Booting partition /dev/sda0/...<span class="cursor">_</span>
+    </p>
   </div>
 </template>
 
@@ -44,7 +48,7 @@ export default {
     const osVersion = browser.getOSVersion();
     const engineName = browser.getEngineName();
     const engineVersion = browser.getEngine()?.version;
-    this.processor = osVersion ? `${osName}/${osVersion}`: osName;
+    this.processor = osVersion ? `${osName}/${osVersion}` : osName;
     this.master = engineVersion ? `${engineName}/${engineVersion}` : engineName;
     this.slave = browser.getPlatformType();
   },

@@ -1,8 +1,12 @@
 <template>
   <section class="splash">
     <div class="splash__screen">
-      <img  v-if="$vuetify.breakpoint.smAndDown" class="splash__screen__binbows--mobile" :src="Binbows" />
-      <img  v-else class="splash__screen__binbows" :src="Binbows" />
+      <img
+        v-if="$vuetify.breakpoint.smAndDown"
+        class="splash__screen__binbows--mobile"
+        :src="Binbows"
+      />
+      <img v-else class="splash__screen__binbows" :src="Binbows" />
     </div>
     <div class="splash__progress" />
   </section>
@@ -24,8 +28,11 @@ export default {
     clearTimeout(this.routeTimeout);
   },
   created() {
-    this.routeTimeout = setTimeout(() => this.$router.replace('/desktop'), 5000);
-  }
+    this.routeTimeout = setTimeout(
+      () => this.$router.replace('/desktop'),
+      5000
+    );
+  },
 };
 </script>
 
@@ -80,7 +87,12 @@ export default {
       left: 0;
       height: 32px;
       width: 70%;
-      background: linear-gradient(90deg, rgba(0,0,0,0) 0%, $color-tertiary-dark 50%, rgba(0,0,0,0) 100%);
+      background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0) 0%,
+        $color-tertiary-dark 50%,
+        rgba(0, 0, 0, 0) 100%
+      );
       animation: progress-bar 3s linear infinite;
     }
   }

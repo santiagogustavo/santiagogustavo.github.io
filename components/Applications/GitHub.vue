@@ -1,9 +1,5 @@
 <template>
-  <DesktopIcon
-    label="GitHub"
-    :icon="icon"
-    @open="handleOpenApplication"
-  />
+  <DesktopIcon label="GitHub" :icon="icon" @open="handleOpenApplication" />
 </template>
 
 <script>

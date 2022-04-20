@@ -62,7 +62,9 @@ export default {
       activeWindow: 'windowManager/getActiveWindow',
     }),
     openWindows() {
-      return Object.values(this.windows).filter((window) => !window.isClosed && !window.modal);
+      return Object.values(this.windows).filter(
+        window => !window.isClosed && !window.modal
+      );
     },
     isActiveModal() {
       return !!this.windows[this.activeWindow]?.modal;

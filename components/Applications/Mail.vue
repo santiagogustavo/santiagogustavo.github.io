@@ -1,9 +1,5 @@
 <template>
-  <DesktopIcon
-    label="Mail me!"
-    :icon="icon"
-    @open="handleOpenApplication"
-  />
+  <DesktopIcon label="Mail me!" :icon="icon" @open="handleOpenApplication" />
 </template>
 
 <script>

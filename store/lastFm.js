@@ -8,7 +8,7 @@ export const state = () => ({
 });
 
 export const mutations = {
-  FETCH_RECENT_TRACKS_PENDING: (state) => {
+  FETCH_RECENT_TRACKS_PENDING: state => {
     state.isLoading = true;
   },
   FETCH_RECENT_TRACKS_SUCCESS: (state, payload) => {
@@ -28,7 +28,7 @@ export const actions = {
       .then(({ data: { recenttracks } }) => {
         commit(
           'FETCH_RECENT_TRACKS_SUCCESS',
-          recenttracks?.track?.map((track) => formatTrack(track))
+          recenttracks?.track?.map(track => formatTrack(track))
         );
       })
       .catch(error => commit('FETCH_RECENT_TRACKS_REJECT', error));
@@ -36,7 +36,7 @@ export const actions = {
 };
 
 export const getters = {
-  getRecentTracks: (state) => state?.recentTracks,
-  getError: (state) => state?.error,
-  getIsLoading: (state) => state?.isLoading,
+  getRecentTracks: state => state?.recentTracks,
+  getError: state => state?.error,
+  getIsLoading: state => state?.isLoading,
 };

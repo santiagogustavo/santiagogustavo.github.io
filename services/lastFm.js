@@ -5,12 +5,13 @@ const instance = axios.create({
   timeout: 10000,
 });
 
-export const getRecentTracks = config => instance.get('/', {
-  params: {
-    method: 'user.getrecenttracks',
-    user: 'santiago-re',
-    api_key: process.env.NUXT_ENV_LASTFM_API_KEY,
-    format: 'json',
-    ...config,
-  }
-});
+export const getRecentTracks = config =>
+  instance.get('/', {
+    params: {
+      method: 'user.getrecenttracks',
+      user: 'santiago-re',
+      api_key: process.env.NUXT_ENV_LASTFM_API_KEY,
+      format: 'json',
+      ...config,
+    },
+  });

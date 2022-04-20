@@ -6,7 +6,12 @@
           <img class="bios__board" :src="Award" />
           <div class="bios__info">
             <p>santiagOS</p>
-            <p>Copyright (C) 2021, <a href="https://github.com/santiagogustavo" target="_blank">@santiagogustavo</a></p>
+            <p>
+              Copyright (C) 2021,
+              <a href="https://github.com/santiagogustavo" target="_blank"
+                >@santiagogustavo</a
+              >
+            </p>
           </div>
         </div>
         <img
@@ -61,7 +66,8 @@ $screen-background: #121010;
   background: black !important;
   animation: turn-on 4s linear forwards;
   color: $color-text-bios !important;
-  b, a {
+  b,
+  a {
     color: white !important;
     text-decoration: none;
   }
@@ -114,7 +120,8 @@ $screen-background: #121010;
     }
   }
 
-  &__app, &__app--mobile {
+  &__app,
+  &__app--mobile {
     font-family: $font-family-ibm;
   }
 

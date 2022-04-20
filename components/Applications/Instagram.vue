@@ -1,9 +1,5 @@
 <template>
-  <DesktopIcon
-    label="Instagram"
-    :icon="icon"
-    @open="handleOpenApplication"
-  />
+  <DesktopIcon label="Instagram" :icon="icon" @open="handleOpenApplication" />
 </template>
 
 <script>

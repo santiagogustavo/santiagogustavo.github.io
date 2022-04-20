@@ -1,9 +1,5 @@
 <template>
-  <DesktopIcon
-    label="last.fm"
-    :icon="icon"
-    @open="handleOpenApplication"
-  />
+  <DesktopIcon label="last.fm" :icon="icon" @open="handleOpenApplication" />
 </template>
 
 <script>

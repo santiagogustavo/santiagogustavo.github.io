@@ -1,7 +1,7 @@
 import Vue from 'vue';
 
 Vue.directive('click-outside', {
-  bind (el, binding, vnode) {
+  bind(el, binding, vnode) {
     el.clickOutsideEvent = function (event) {
       // here I check that click was outside the el and his childrens
       if (!(el === event.target || el.contains(event.target))) {
@@ -11,7 +11,7 @@ Vue.directive('click-outside', {
     };
     document.body.addEventListener('click', el.clickOutsideEvent);
   },
-  unbind (el) {
+  unbind(el) {
     document.body.removeEventListener('click', el.clickOutsideEvent);
   },
 });

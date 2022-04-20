@@ -81,4 +81,3 @@ export default {
   max-height: $desktop-manager-height-mobile;
 }
 </style>
-

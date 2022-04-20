@@ -12,10 +12,18 @@
       >
         <div class="taskview__list-content" @click="handleClickTask(window.id)">
           <div class="taskview__list-index">{{ index + 1 }}.</div>
-          <img v-if="window.icon" class="taskview__list-icon" :src="window.icon" />
+          <img
+            v-if="window.icon"
+            class="taskview__list-icon"
+            :src="window.icon"
+          />
           {{ window.name }}
         </div>
-        <img class="taskview__list-close" :src="Close" @click="handleCloseWindow(window.id)" />
+        <img
+          class="taskview__list-close"
+          :src="Close"
+          @click="handleCloseWindow(window.id)"
+        />
       </Task>
     </transition-group>
   </section>
@@ -52,7 +60,7 @@ export default {
       windows: 'windowManager/getWindows',
     }),
     openWindows() {
-      return Object.values(this.windows).filter((window) => !window.isClosed);
+      return Object.values(this.windows).filter(window => !window.isClosed);
     },
     className() {
       return classNames('taskview', {
@@ -137,7 +145,8 @@ export default {
     font-size: 32px;
     line-height: 14px;
     text-transform: uppercase;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black, 1px 2px 2px black;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black,
+      1px 2px 2px black;
   }
 
   &__close {

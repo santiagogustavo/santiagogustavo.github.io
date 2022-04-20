@@ -1,9 +1,5 @@
 <template>
-  <DesktopIcon
-    label="LinkedIn"
-    :icon="icon"
-    @open="handleOpenApplication"
-  />
+  <DesktopIcon label="LinkedIn" :icon="icon" @open="handleOpenApplication" />
 </template>
 
 <script>

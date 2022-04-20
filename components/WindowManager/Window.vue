@@ -1,8 +1,5 @@
 <template>
-  <div
-    v-if="$vuetify.breakpoint.smAndDown"
-    :class="classNameMobile"
-  >
+  <div v-if="$vuetify.breakpoint.smAndDown" :class="classNameMobile">
     <div class="window--mobile__header">
       <div class="window--mobile__header__name">
         <img v-if="icon" class="window--mobile__header__icon" :src="icon" />
@@ -30,10 +27,20 @@
         {{ name }}
       </div>
       <div class="window__header__buttons" @click="handleActiveWindow">
-        <v-btn v-if="minimizable && !modal" icon small @click.stop="handleMinimizeWindow">
+        <v-btn
+          v-if="minimizable && !modal"
+          icon
+          small
+          @click.stop="handleMinimizeWindow"
+        >
           <v-icon>mdi-window-minimize</v-icon>
         </v-btn>
-        <v-btn v-if="maximizable && !modal" icon small @click.stop="handleToggleMaximize">
+        <v-btn
+          v-if="maximizable && !modal"
+          icon
+          small
+          @click.stop="handleToggleMaximize"
+        >
           <v-icon
             >mdi-{{
               isMaximized ? 'window-restore' : 'window-maximize'
@@ -338,7 +345,8 @@ export default {
   display: flex;
   flex-direction: column;
 
-  &, &--mobile {
+  &,
+  &--mobile {
     position: absolute;
     background: url(static/imgs/bg-window.png);
     color: $color-text;
@@ -437,7 +445,8 @@ export default {
   max-height: $window-height-mobile;
   overflow-y: auto;
   animation: open 500ms $cubic-bezier-ease;
-  transition: z-index 500ms cubic-bezier(0,1,1,0), transition-ease(transform, 500ms), transition-ease(opacity, 500ms);
+  transition: z-index 500ms cubic-bezier(0, 1, 1, 0),
+    transition-ease(transform, 500ms), transition-ease(opacity, 500ms);
 
   &__header {
     position: sticky;
@@ -496,7 +505,8 @@ export default {
     transform-origin: bottom;
   }
 
-  &--closed, &--modal--closed {
+  &--closed,
+  &--modal--closed {
     pointer-events: none;
     transform-origin: center;
     opacity: 0;

@@ -1,9 +1,5 @@
 <template>
-  <DesktopIcon
-    label="Discogs"
-    :icon="icon"
-    @open="handleOpenApplication"
-  />
+  <DesktopIcon label="Discogs" :icon="icon" @open="handleOpenApplication" />
 </template>
 
 <script>

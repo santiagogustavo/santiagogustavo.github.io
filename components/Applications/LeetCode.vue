@@ -1,9 +1,5 @@
 <template>
-  <DesktopIcon
-    label="LeetCode"
-    :icon="icon"
-    @open="handleOpenApplication"
-  />
+  <DesktopIcon label="LeetCode" :icon="icon" @open="handleOpenApplication" />
 </template>
 
 <script>

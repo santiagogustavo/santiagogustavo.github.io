@@ -43,16 +43,19 @@ export const mutations = {
     const { [payload]: removed, ...windows } = state.windows;
     state.windows = windows;
   },
-  MINIMIZE_ALL: (state) => {
+  MINIMIZE_ALL: state => {
     const mutatedWindows = { ...state.windows };
     Object.keys(mutatedWindows).forEach(id => {
       const { modal } = mutatedWindows[id];
-      mutatedWindows[id] = { ...mutatedWindows[id], isMinimized: !modal && true };
+      mutatedWindows[id] = {
+        ...mutatedWindows[id],
+        isMinimized: !modal && true,
+      };
     });
     state.windows = mutatedWindows;
     state.activeWindow = undefined;
   },
-  MINIMIZE_CURRENT_WINDOW: (state) => {
+  MINIMIZE_CURRENT_WINDOW: state => {
     if (!state.activeWindow) {
       return;
     }
@@ -67,15 +70,15 @@ export const mutations = {
   SET_ACTIVE_WINDOW: (state, payload) => {
     state.activeWindow = payload;
   },
-  SET_LAST_ACTIVE_WINDOW: (state) => {
+  SET_LAST_ACTIVE_WINDOW: state => {
     const remainingWindows = Object.values(state.windows).filter(
-      (window) => !window.isMinimized && !window.isClosed
+      window => !window.isMinimized && !window.isClosed
     );
     const lastActiveWindow = remainingWindows.length
       ? remainingWindows[remainingWindows.length - 1].id
       : undefined;
     state.activeWindow = lastActiveWindow;
-  }
+  },
 };
 
 export const actions = {
@@ -120,7 +123,7 @@ export const actions = {
 };
 
 export const getters = {
-  getWindows: (state) => state?.windows,
-  getWindowById: (state) => (id) => state?.windows[id],
-  getActiveWindow: (state) => state?.activeWindow,
+  getWindows: state => state?.windows,
+  getWindowById: state => id => state?.windows[id],
+  getActiveWindow: state => state?.activeWindow,
 };
