@@ -63,9 +63,9 @@ export default {
         this.isReadyForDoubleClick = false;
         this.isFocused = false;
         if (this.open) {
-          this.$emit('open');
-        } else {
           this.$emit('close');
+        } else {
+          this.$emit('open');
         }
       } else {
         this.isReadyForDoubleClick = true;
