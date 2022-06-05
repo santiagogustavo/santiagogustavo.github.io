@@ -74,8 +74,9 @@ export default {
 
 <style lang="scss">
 .file-manager {
-  width: 600px;
+  min-width: 600px;
   min-height: 300px;
+  flex: 1;
   display: flex;
 
   &__left-tab {
