@@ -25,7 +25,7 @@ export default {
 <style lang="scss">
 .window-macplus {
   width: 100%;
-  background: black;
+  background: #ff8fa7;
   display: flex;
   align-items: center;
   iframe {
