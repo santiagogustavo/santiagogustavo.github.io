@@ -37,8 +37,10 @@ export default {
   computed: {
     filteredFilesystem() {
       return this.filesystem.filter(
-        file =>
-          !!this.isFolderOpen[file.name] || !!this.isFolderOpen[file.parent]
+        (file, index) =>
+          index === 0 ||
+          !!this.isFolderOpen[file.name] ||
+          !!this.isFolderOpen[file.parent]
       );
     },
   },
@@ -52,13 +54,19 @@ export default {
       const { isFolderOpen, filteredFilesystem } = this;
       isFolderOpen[name] = false;
 
+      let closedSubfolders = [];
+
       filteredFilesystem.forEach(file => {
         if (file.parent === name) {
           isFolderOpen[file.name] = false;
+          closedSubfolders = [...closedSubfolders, file.name];
         }
       });
 
       this.isFolderOpen = { ...isFolderOpen };
+
+      /* close every subfolder */
+      closedSubfolders.forEach(file => this.handleCloseFolder(file));
     },
   },
 };
