@@ -2,7 +2,7 @@ export const flatMapFilesystem = filesystem => {
   let formattedFiles = [];
 
   const flatMapFiles = ({ files, ...root }, level = 0, parent) => {
-    formattedFiles = [...formattedFiles, { ...root, level, parent }];
+    formattedFiles = [...formattedFiles, { ...root, level, parent, files }];
     if (!files) {
       return;
     }

@@ -100,6 +100,7 @@ export default {
 
   &__name {
     user-select: none;
+    color: $color-white;
     font-family: $font-family-reactor;
     padding: 2px;
     font-size: $desktop-icon-font-size;

@@ -11,12 +11,18 @@
         @close="handleCloseFolder(file.name)"
       />
     </section>
-    <section class="file-manager__right-tab">right</section>
+    <section class="file-manager__right-tab">
+      <FileDirectory
+        :directory="currentDirectory"
+        @openFolder="handleOpenFolder"
+      />
+    </section>
   </div>
 </template>
 
 <script>
 import FileNavigation from './FileNavigation.vue';
+import FileDirectory from './FileDirectory.vue';
 
 import Folder from '@/data/filesystem/Folder';
 import { flatMapFilesystem } from '@/utils/files';
@@ -25,6 +31,7 @@ export default {
   name: 'FileManager',
   components: {
     FileNavigation,
+    FileDirectory,
   },
   data() {
     return {
@@ -32,6 +39,7 @@ export default {
       isFolderOpen: {
         [Folder.name]: true,
       },
+      currentDirectory: Folder,
     };
   },
   computed: {
@@ -49,6 +57,8 @@ export default {
       const { isFolderOpen } = this;
       isFolderOpen[name] = true;
       this.isFolderOpen = { ...isFolderOpen };
+
+      this.currentDirectory = this.filesystem.find(file => file.name === name);
     },
     handleCloseFolder(name) {
       const { isFolderOpen, filteredFilesystem } = this;
@@ -67,6 +77,11 @@ export default {
 
       /* close every subfolder */
       closedSubfolders.forEach(file => this.handleCloseFolder(file));
+
+      const currentFile = this.filesystem.find(file => file.name === name);
+      this.currentDirectory = this.filesystem.find(
+        file => file.name === currentFile.parent
+      );
     },
   },
 };

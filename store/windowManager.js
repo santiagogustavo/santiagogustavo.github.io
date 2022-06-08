@@ -90,7 +90,11 @@ export const actions = {
       isClosed: false,
       ...window,
     });
-    commit('SET_ACTIVE_WINDOW', id);
+
+    /* Debounce click event */
+    setTimeout(() => {
+      commit('SET_ACTIVE_WINDOW', id);
+    }, 1);
   },
   minimizeWindow({ commit }, id) {
     commit('MINIMIZE_WINDOW', id);
