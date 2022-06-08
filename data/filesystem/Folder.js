@@ -1,8 +1,7 @@
 import FolderGeneric from '@/assets/imgs/icons/folder_generic.png';
-import Dolphin from '@/assets/imgs/icons/dolphin.jpg';
 
 import { APPLICATION_TYPES } from '@/constants/applications';
-import Windows from '@/constants/windows';
+import Blob from '@/data/applications/Blob';
 
 export default {
   name: 'Folder',
@@ -31,12 +30,7 @@ export default {
           type: APPLICATION_TYPES.FOLDER,
           icon: FolderGeneric,
         },
-        {
-          name: 'ECCOJAMS',
-          type: APPLICATION_TYPES.APPLICATION,
-          component: Windows.BLOB,
-          icon: Dolphin,
-        },
+        Blob,
       ],
     },
     {
