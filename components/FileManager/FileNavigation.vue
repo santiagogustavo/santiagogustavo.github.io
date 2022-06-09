@@ -6,6 +6,16 @@
       class="file-navigation__level"
       :class="depth === level && 'file-navigation__level--dashed'"
     />
+    <div
+      v-if="expand"
+      class="file-navigation__expand"
+      @click="handleClickExpand"
+    >
+      +
+    </div>
+    <div v-else class="file-navigation__collapse" @click="handleClickCollapse">
+      -
+    </div>
     <div class="file-navigation__clickable" @click="handleClick">
       <img class="file-navigation__icon" :src="Icon" />
       <span class="file-navigation__label">{{ label }}</span>
@@ -29,6 +39,10 @@ export default {
     label: {
       type: String,
       required: true,
+    },
+    expand: {
+      type: Boolean,
+      default: false,
     },
     open: {
       type: Boolean,
@@ -62,11 +76,7 @@ export default {
       if (this.isReadyForDoubleClick) {
         this.isReadyForDoubleClick = false;
         this.isFocused = false;
-        if (this.open) {
-          this.$emit('close');
-        } else {
-          this.$emit('open');
-        }
+        this.$emit('open');
       } else {
         this.isReadyForDoubleClick = true;
         this.doubleClickTimeout = setTimeout(() => {
@@ -80,6 +90,12 @@ export default {
     handleClickOutside() {
       if (!this.isFocused) return;
       this.isFocused = false;
+    },
+    handleClickExpand() {
+      this.$emit('expand');
+    },
+    handleClickCollapse() {
+      this.$emit('collapse');
     },
   },
 };
@@ -122,6 +138,22 @@ export default {
       width: 1px;
       background: black;
     }
+  }
+
+  &__expand,
+  &__collapse {
+    cursor: pointer;
+    user-select: none;
+    height: 12px;
+    width: 12px;
+    margin-left: 5px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    border: 1px solid black;
+    background: $color-white;
   }
 
   &__clickable {
