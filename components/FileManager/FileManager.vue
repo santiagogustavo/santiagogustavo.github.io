@@ -1,8 +1,11 @@
 <template>
-  <div class="file-manager">
+  <div :class="className">
     <FileNavbar :url="url" @back="popHistory" />
     <div class="file-manager__container">
-      <section class="file-manager__left-tab">
+      <section
+        v-if="$vuetify.breakpoint.smAndUp"
+        class="file-manager__left-tab"
+      >
         <FileNavigation
           v-for="(file, index) in filteredFilesystem"
           :key="`file-navigation-${index}`"
@@ -26,6 +29,8 @@
 </template>
 
 <script>
+import classNames from 'classnames';
+
 import FileNavbar from './FileNavbar.vue';
 import FileNavigation from './FileNavigation.vue';
 import FileDirectory from './FileDirectory.vue';
@@ -51,6 +56,14 @@ export default {
     };
   },
   computed: {
+    smAndUp() {
+      return this.$vuetify.breakpoint.smAndUp;
+    },
+    className() {
+      return classNames('file-manager', {
+        'file-manager--desktop': !!this.smAndUp,
+      });
+    },
     filteredFilesystem() {
       return this.filesystem
         .filter(file => file.type === APPLICATION_TYPES.FOLDER)
@@ -123,10 +136,14 @@ export default {
 <style lang="scss">
 .file-manager {
   flex: 1;
+  height: $window-content-height-mobile;
   display: flex;
   flex-direction: column;
-  min-width: 600px;
-  min-height: 300px;
+
+  &--desktop {
+    min-width: 600px;
+    min-height: 300px;
+  }
 
   &__container {
     flex: 1;

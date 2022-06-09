@@ -140,6 +140,7 @@ export default {
   }
 
   &__label {
+    user-select: none;
     width: 100%;
     font-family: $font-family-reactor;
     font-size: 32px;

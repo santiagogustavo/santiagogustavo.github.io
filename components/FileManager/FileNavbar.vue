@@ -1,5 +1,5 @@
 <template>
-  <section class="file-navbar">
+  <section :class="className">
     <v-btn
       icon
       small
@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import classNames from 'classnames';
+
 import FolderClosed from '@/assets/imgs/icons/folder_small_closed.png';
 
 export default {
@@ -32,6 +34,16 @@ export default {
       FolderClosed,
     };
   },
+  computed: {
+    smAndDown() {
+      return this.$vuetify.breakpoint.smAndDown;
+    },
+    className() {
+      return classNames('file-navbar', {
+        'file-navbar--mobile': !!this.smAndDown,
+      });
+    },
+  },
   methods: {
     handleClickBack() {
       this.$emit('back');
@@ -42,6 +54,8 @@ export default {
 
 <style lang="scss">
 .file-navbar {
+  $p: &;
+
   display: flex;
   align-items: center;
   background: $color-taskbar-background;
@@ -51,6 +65,15 @@ export default {
   border-bottom: 2px $color-taskbar-border-dark solid;
   width: 100%;
   padding: 2px 4px;
+
+  &--mobile {
+    #{$p}__back {
+      min-height: 32px;
+      min-width: 32px;
+      max-height: 32px;
+      max-width: 32px;
+    }
+  }
 
   &__back {
     flex: 0;
@@ -96,6 +119,9 @@ export default {
     color: $color-text;
     font-family: $font-family-arial;
     font-size: 11px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 }
 </style>
