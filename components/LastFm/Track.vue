@@ -2,8 +2,8 @@
   <div class="lastfm-track">
     <img class="lastfm-track__thumb" :src="thumbnail" />
     <section class="lastfm-track__info">
-      <b>{{name}}</b>
-      <span>{{artist}}</span>
+      <b>{{ name }}</b>
+      <span>{{ artist }}</span>
     </section>
     <section v-if="nowPlaying" class="lastfm-track__nowplaying">
       <v-icon x-small>mdi-poll</v-icon>
@@ -30,7 +30,7 @@ export default {
     nowPlaying: {
       type: Boolean,
       default: false,
-    }
+    },
   },
 };
 </script>
@@ -54,7 +54,8 @@ export default {
     min-width: 200px;
     max-width: 200px;
 
-    b, span {
+    b,
+    span {
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;

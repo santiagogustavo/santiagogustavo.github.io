@@ -13,6 +13,8 @@ $window-maximized-height: calc(100vh - #{$taskbar-height});
 $window-height-mobile: calc(100vh - #{$taskbar-height-mobile});
 $window-header-name-size: 22px;
 $window-header-name-size-mobile: 28px;
+$window-header-height-mobile: 50px;
+$window-content-height-mobile: calc(100vh - #{$window-header-height-mobile} - #{$taskbar-height-mobile});
 
 // DESKTOP MANAGER
 $desktop-manager-height: calc(100vh - #{$taskbar-height});
@@ -23,3 +25,6 @@ $desktop-manager-padding: 8px;
 $desktop-icon-size: 64px;
 $desktop-icon-img-size: 32px;
 $desktop-icon-font-size: 18px;
+
+// FILE MANAGER
+$file-manager-navigation-padding: 4px;

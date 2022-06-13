@@ -1,4 +1,5 @@
 export const APPLICATION_TYPES = {
   APPLICATION: 'APPLICATION',
+  FOLDER: 'FOLDER',
   LINK: 'LINK',
 };

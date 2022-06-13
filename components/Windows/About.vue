@@ -6,11 +6,15 @@
       <div class="window-about--mobile__disclaimer">
         Hi there! 😁
         <br /><br />
-        This website is under construction and will feature a complete disclaimer here soon.
+        This website is under construction and will feature a complete
+        disclaimer here soon.
         <br /><br />
-        Close this window and interact with the links at the desktop to keep in touch. See ya soon...
+        Close this window and interact with the links at the desktop to keep in
+        touch. See ya soon...
       </div>
-      <v-btn class="window-about--mobile__close" @click="handleClickClose">CLOSE WINDOW</v-btn>
+      <v-btn class="window-about--mobile__close" @click="handleClickClose"
+        >CLOSE WINDOW</v-btn
+      >
     </div>
   </div>
   <div v-else class="window-about">
@@ -20,7 +24,8 @@
       <div class="window-about__disclaimer">
         Hi there! 😁
         <br /><br />
-        This website is under construction and will feature a complete disclaimer here soon.
+        This website is under construction and will feature a complete
+        disclaimer here soon.
         <br /><br />
         Interact with the links at the desktop to keep in touch. See ya soon...
       </div>

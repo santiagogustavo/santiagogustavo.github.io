@@ -100,11 +100,13 @@ export default {
 
   &__name {
     user-select: none;
+    color: $color-white;
     font-family: $font-family-reactor;
     padding: 2px;
     font-size: $desktop-icon-font-size;
     line-height: 12px;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black, 1px 2px 2px black;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black,
+      1px 2px 2px black;
   }
 
   &__icon {
@@ -121,13 +123,15 @@ export default {
     }
   }
 
-  &__icon, &__name {
+  &__icon,
+  &__name {
     border: 1px dashed;
     border-color: transparent;
   }
 
-  &--focused &__icon, &--focused &__name {
-    background: rgba(102,200,168, 0.5);
+  &--focused &__icon,
+  &--focused &__name {
+    background: rgba(102, 200, 168, 0.5);
     border-color: $color-tertiary;
   }
 }

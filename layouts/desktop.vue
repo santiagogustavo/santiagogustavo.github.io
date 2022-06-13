@@ -32,14 +32,14 @@ export default {
       return classNames('desktop__modal-overlay', {
         'desktop__modal-overlay--visible': this.modal,
       });
-    }
+    },
   },
   mounted() {
     this.$nuxt.$on('turnoff', () => {
       this.isTurnOff = true;
       setTimeout(() => window.close(), 1000);
     });
-    this.$nuxt.$on('modal', (value) => {
+    this.$nuxt.$on('modal', value => {
       this.modal = value;
     });
   },

@@ -17,7 +17,9 @@ export default {
   },
   computed: {
     className() {
-      return classNames('taskbar__task', { 'taskbar__task--active': this.active });
+      return classNames('taskbar__task', {
+        'taskbar__task--active': this.active,
+      });
     },
   },
 };

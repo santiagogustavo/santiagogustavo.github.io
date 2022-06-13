@@ -3,4 +3,5 @@ export default {
   ABOUT: 'ABOUT',
   SHUTDOWN: 'SHUTDOWN',
   MACPLUS: 'MACPLUS',
+  FOLDER: 'FOLDER',
 };

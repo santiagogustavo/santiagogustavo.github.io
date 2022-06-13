@@ -1,0 +1,11 @@
+{
+  "*.+(js|vue)": [
+    "eslint"
+  ],
+  "*.+(css|vue)": [
+    "stylelint"
+  ],
+  "*.+(js|json|vue)": [
+    "prettier --write"
+  ]
+}

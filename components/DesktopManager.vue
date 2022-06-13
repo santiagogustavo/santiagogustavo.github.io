@@ -1,15 +1,12 @@
 <template>
   <div :class="className">
-    <About />
-    <Mail />
-    <Instagram />
-    <LinkedIn />
-    <GitHub />
-    <LeetCode />
-    <LastFm />
-    <Discogs />
-    <MacPlus />
-    <Shutdown />
+    <DesktopIcon
+      v-for="file in DesktopFiles"
+      :key="file.name"
+      v-bind="file"
+      :label="file.label || file.name"
+      @open="handleOpenApplication(file)"
+    />
 
     <Clippy />
   </div>
@@ -18,32 +15,20 @@
 <script>
 import classNames from 'classnames';
 
-import About from '@/components/Applications/About.vue';
-import Shutdown from '@/components/Applications/Shutdown.vue';
-import Instagram from '@/components/Applications/Instagram.vue';
-import LinkedIn from '@/components/Applications/LinkedIn.vue';
-import GitHub from '@/components/Applications/GitHub.vue';
-import LeetCode from '@/components/Applications/LeetCode.vue';
-import LastFm from '@/components/Applications/LastFm.vue';
-import Mail from '@/components/Applications/Mail.vue';
-import Discogs from '@/components/Applications/Discogs.vue';
-import Clippy from '@/components/Clippy.vue';
-import MacPlus from '@/components/Applications/MacPlus.vue';
+import DesktopIcon from '@/components/DesktopIcon.vue';
+import DesktopFiles from '@/data/filesystem/Desktop';
+import ApplicationMixin from '@/mixins/application';
 
 export default {
   name: 'DesktopManager',
   components: {
-    About,
-    Shutdown,
-    Instagram,
-    LinkedIn,
-    GitHub,
-    LeetCode,
-    LastFm,
-    Mail,
-    Discogs,
-    Clippy,
-    MacPlus,
+    DesktopIcon,
+  },
+  mixins: [ApplicationMixin],
+  data() {
+    return {
+      DesktopFiles,
+    };
   },
   computed: {
     className() {
@@ -78,4 +63,3 @@ export default {
   max-height: $desktop-manager-height-mobile;
 }
 </style>
-
