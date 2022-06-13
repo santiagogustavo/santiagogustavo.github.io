@@ -103,6 +103,9 @@ export default {
       this.history = [...this.history.slice(0, -1)];
     },
     handleOpenFolder(name) {
+      if (!this.isFolderExpanded[name]) {
+        this.handleExpandFolder(name);
+      }
       this.pushHistory(name);
     },
     handleExpandFolder(name) {
