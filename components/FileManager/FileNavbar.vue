@@ -110,6 +110,7 @@ export default {
 
   &__url {
     flex: 1;
+    user-select: none;
     display: flex;
     align-items: center;
     background: $color-white;

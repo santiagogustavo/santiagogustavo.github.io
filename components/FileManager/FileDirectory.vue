@@ -4,8 +4,8 @@
       v-for="file in directory.files"
       :key="file.name"
       class="file-directory__icon"
-      :label="file.name"
-      :icon="file.icon"
+      :label="file.label || file.name"
+      :icon="file.icon || file.url"
       @open="handleOpenApplication(file)"
     />
   </div>

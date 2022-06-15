@@ -13,7 +13,11 @@
       :maximizable="window.maximizable"
       :modal="window.modal"
     >
-      <component :is="getComponentByName(window.component)" :id="window.id" />
+      <component
+        :is="getComponentByName(window.component)"
+        :id="window.id"
+        v-bind="window.metadata"
+      />
     </Window>
   </section>
 </template>

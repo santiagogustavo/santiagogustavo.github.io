@@ -4,7 +4,7 @@ import Windows from '@/constants/windows';
 
 export default {
   name: 'ECCOJAMS',
-  label: "Totally not a virus trust me i'm a dolphin",
+  label: 'ECCOJAMS',
   component: Windows.BLOB,
   icon: Dolphin,
   type: APPLICATION_TYPES.APPLICATION,

@@ -16,11 +16,15 @@ export default {
         case APPLICATION_TYPES.FOLDER:
           this.$emit('openFolder', app.name);
           break;
+        case APPLICATION_TYPES.IMAGE:
         case APPLICATION_TYPES.APPLICATION:
           this.registerWindow({
             name: app.name,
+            label: app.label,
             component: app.component,
-            icon: app.icon,
+            icon: app.icon || app.url,
+            url: app.url,
+            metadata: app.metadata,
             maximizable: app.maximizable,
             minimizable: app.minimizable,
             modal: app.modal,
