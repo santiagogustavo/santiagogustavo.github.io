@@ -9,6 +9,7 @@ import Discogs from '@/data/applications/Discogs';
 import MacPlus from '@/data/applications/MacPlus';
 import Shutdown from '@/data/applications/Shutdown';
 import GenericFolder from '@/data/applications/GenericFolder';
+import FoodGenie from '@/data/applications/FoodGenie';
 
 export default [
   About,
@@ -20,6 +21,7 @@ export default [
   LastFm,
   Discogs,
   MacPlus,
-  Shutdown,
+  FoodGenie,
   GenericFolder,
+  Shutdown,
 ];
