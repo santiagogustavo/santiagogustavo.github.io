@@ -10,6 +10,7 @@ import MacPlus from '@/data/applications/MacPlus';
 import Shutdown from '@/data/applications/Shutdown';
 import GenericFolder from '@/data/applications/GenericFolder';
 import FoodGenie from '@/data/applications/FoodGenie';
+import Tetris from '@/data/applications/Tetris';
 
 export default [
   About,
@@ -22,6 +23,7 @@ export default [
   Discogs,
   MacPlus,
   FoodGenie,
+  Tetris,
   GenericFolder,
   Shutdown,
 ];

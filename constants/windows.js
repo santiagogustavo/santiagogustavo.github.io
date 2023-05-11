@@ -5,4 +5,5 @@ export default {
   SHUTDOWN: 'SHUTDOWN',
   MACPLUS: 'MACPLUS',
   FOLDER: 'FOLDER',
+  TETRIS: 'TETRIS',
 };
