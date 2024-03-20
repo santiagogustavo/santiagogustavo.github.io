@@ -9,7 +9,7 @@ import Discogs from '@/data/applications/Discogs';
 import MacPlus from '@/data/applications/MacPlus';
 import Shutdown from '@/data/applications/Shutdown';
 import GenericFolder from '@/data/applications/GenericFolder';
-import FoodGenie from '@/data/applications/FoodGenie';
+// import FoodGenie from '@/data/applications/FoodGenie';
 import Tetris from '@/data/applications/Tetris';
 
 export default [
@@ -22,7 +22,7 @@ export default [
   LastFm,
   Discogs,
   MacPlus,
-  FoodGenie,
+  // FoodGenie,
   Tetris,
   GenericFolder,
   Shutdown,
