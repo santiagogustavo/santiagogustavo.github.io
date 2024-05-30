@@ -5,20 +5,20 @@ $taskbar-clock-size: 20px;
 $taskbar-task-size: 20px;
 
 // TASKVIEW
-$taskview-height: calc(100vh - #{$taskbar-height-mobile});
+$taskview-height: calc(100dvh - #{$taskbar-height-mobile});
 $taskview-list-height: 64px;
 
 // WINDOW
-$window-maximized-height: calc(100vh - #{$taskbar-height});
-$window-height-mobile: calc(100vh - #{$taskbar-height-mobile});
+$window-maximized-height: calc(100dvh - #{$taskbar-height});
+$window-height-mobile: calc(100dvh - #{$taskbar-height-mobile});
 $window-header-name-size: 22px;
 $window-header-name-size-mobile: 28px;
-$window-header-height-mobile: 50px;
-$window-content-height-mobile: calc(100vh - #{$window-header-height-mobile} - #{$taskbar-height-mobile});
+$window-header-height-mobile: 46px;
+$window-content-height-mobile: calc(100dvh - #{$window-header-height-mobile} - #{$taskbar-height-mobile});
 
 // DESKTOP MANAGER
-$desktop-manager-height: calc(100vh - #{$taskbar-height});
-$desktop-manager-height-mobile: calc(100vh - #{$taskbar-height-mobile});
+$desktop-manager-height: calc(100dvh - #{$taskbar-height});
+$desktop-manager-height-mobile: calc(100dvh - #{$taskbar-height-mobile});
 $desktop-manager-padding: 8px;
 
 // DESKTOP ICON

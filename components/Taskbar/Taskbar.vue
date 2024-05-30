@@ -128,7 +128,7 @@ export default {
   &,
   &--mobile {
     z-index: $z-index-taskbar;
-    width: 100%;
+    width: 100dvw;
     padding: 2px;
     background: $color-taskbar-background;
     color: $color-text;
@@ -146,7 +146,8 @@ export default {
   }
 
   &--mobile {
-    position: absolute;
+    position: fixed;
+    left: 0;
     bottom: 0;
     height: $taskbar-height-mobile;
     display: flex;

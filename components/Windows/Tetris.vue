@@ -37,7 +37,7 @@ export default {
   }
 
   &--mobile {
-    height: calc(#{$window-height-mobile} - #{$window-header-name-size-mobile});
+    height: $window-content-height-mobile;
     iframe {
       width: 100%;
       height: 100%;

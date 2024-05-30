@@ -4,5 +4,11 @@ module.exports = {
   // https://stylelint.io/user-guide/configuration
   rules: {
     'at-rule-no-unknown': null,
+    'unit-no-unknown': [
+      true,
+      {
+        ignoreUnits: ['dvh', 'dvw'],
+      },
+    ],
   },
 };

@@ -78,7 +78,7 @@ export default {
 
 <style lang="scss">
 .resume {
-  max-height: 100vh;
+  max-height: 100dvh;
   overflow: auto;
 
   &__qrcode {
