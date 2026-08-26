@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'Image',
+  name: 'AppImage',
   props: {
     url: {
       type: String,

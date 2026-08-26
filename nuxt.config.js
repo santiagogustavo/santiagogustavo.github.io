@@ -1,6 +1,13 @@
+import { defineNuxtConfig } from '@nuxt/bridge';
 import colors from 'vuetify/es5/util/colors';
 
-export default {
+export default defineNuxtConfig({
+  bridge: {
+    // vite: true,
+    webpack: true,
+    nitro: true,
+  },
+
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
@@ -69,9 +76,6 @@ export default {
     ],
   },
 
-  // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['@/assets/styles/index.scss'],
-
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: ['@/plugins/clickOutside.js'],
 
@@ -121,10 +125,10 @@ export default {
     },
   },
 
-  // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-    extend(config) {
-      config.output.hashFunction = 'sha256';
+  watchers: {
+    webpack: {
+      aggregateTimeout: 300,
+      poll: 1000, // Check for changes every 1000ms
     },
   },
-};
+});

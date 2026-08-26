@@ -1,16 +1,15 @@
 <template>
   <div v-if="$vuetify.breakpoint.smAndDown" class="window-about--mobile">
-    <img class="window-about--mobile__avatar" :src="Santiago" />
+    <img class="window-about--mobile__avatar" :src="Avatar" />
     <div class="window-about--mobile__info">
       <img class="window-about--mobile__logo" :src="LogoVertical" />
       <div class="window-about--mobile__disclaimer">
         Hi there! 😁
         <br /><br />
-        This website is under construction and will feature a complete
-        disclaimer here soon.
+        This website is my personal portfolio and a little pet project.
         <br /><br />
         Close this window and interact with the links at the desktop to keep in
-        touch. See ya soon...
+        touch and know more about me!
       </div>
       <v-btn class="window-about--mobile__close" @click="handleClickClose"
         >CLOSE WINDOW</v-btn
@@ -18,16 +17,16 @@
     </div>
   </div>
   <div v-else class="window-about">
-    <img class="window-about__avatar" :src="Santiago" />
+    <img class="window-about__avatar" :src="Avatar" />
     <div class="window-about__info">
       <img class="window-about__logo" :src="LogoHorizontal" />
       <div class="window-about__disclaimer">
         Hi there! 😁
         <br /><br />
-        This website is under construction and will feature a complete
-        disclaimer here soon.
+        This website is my personal portfolio and a little pet project.
         <br /><br />
-        Interact with the links at the desktop to keep in touch. See ya soon...
+        Close this window and interact with the links at the desktop to keep in
+        touch and know more about me!
       </div>
     </div>
   </div>
@@ -36,7 +35,7 @@
 <script>
 import WindowMixin from '@/mixins/window';
 
-import Santiago from '@/assets/imgs/icons/santiago.png';
+import Avatar from '@/assets/imgs/avatar.png';
 import LogoVertical from '@/assets/imgs/logo-vertical.png';
 import LogoHorizontal from '@/assets/imgs/logo-horizontal.png';
 
@@ -45,7 +44,7 @@ export default {
   mixins: [WindowMixin],
   data() {
     return {
-      Santiago,
+      Avatar,
       LogoVertical,
       LogoHorizontal,
     };
@@ -59,9 +58,9 @@ export default {
   align-items: center;
   justify-content: center;
   padding: 16px;
-  flex: 1;
+  // flex: 1;
   width: 100%;
-  height: 100%;
+  // height: 100%;
 
   &__avatar {
     display: block;

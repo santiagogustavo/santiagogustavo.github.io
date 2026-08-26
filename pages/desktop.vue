@@ -8,7 +8,7 @@
 <script>
 import { mapActions } from 'vuex';
 
-import Santiago from '@/assets/imgs/icons/santiago.png';
+import Me from '@/assets/imgs/icons/me.png';
 
 import DesktopManager from '@/components/DesktopManager.vue';
 import WindowManager from '@/components/WindowManager/WindowManager.vue';
@@ -25,7 +25,7 @@ export default {
   created() {
     this.registerWindow({
       name: 'Hello!',
-      icon: Santiago,
+      icon: Me,
       component: Windows.ABOUT,
     });
   },
